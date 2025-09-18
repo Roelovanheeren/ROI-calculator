@@ -111,7 +111,14 @@ const ROICalculator = () => {
     const afterTaxProgramCost = annualProgramCost * 0.75; // 75% after 25% tax relief
     const netSavings = totalSavings - afterTaxProgramCost;
     const roiPercentage = afterTaxProgramCost > 0 ? ((netSavings / afterTaxProgramCost) * 100) : 0;
-    const paybackMonths = afterTaxProgramCost > 0 ? Math.ceil(afterTaxProgramCost / (totalSavings / 12)) : 0;
+    // Monthly costs and savings
+    const monthlyProgramCostAfterTax = (monthlyProgramCost * 0.75); // 25% tax relief
+    const monthlySavings = totalSavings / 12;
+    
+    // For monthly payment model: payback = when monthly savings > monthly cost
+    // If monthly savings exceed monthly costs, payback is 1 month (immediate positive cash flow)
+    // If not, calculate how many months of savings needed to cover monthly cost
+    const paybackMonths = monthlySavings >= monthlyProgramCostAfterTax ? 1 : Math.ceil(monthlyProgramCostAfterTax / monthlySavings);
 
     const results: Calculations = {
       currentCosts,
