@@ -574,83 +574,83 @@ const ROICalculator = () => {
               
               <div className="space-y-4">
                 {/* Absenteeism Savings */}
-                <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-4 border-l-4 border-green-500">
-                  <div className="text-2xl font-bold text-gray-800 mb-2">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.sickDaysReduction || 0)}
                   </div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Estimated Annual Savings from Reduced Absenteeism</h3>
-                  <p className="text-sm text-gray-600">25% reduction in sick days through improved employee wellness</p>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Absenteeism</h3>
+                  <p className="text-sm font-body text-barn-tertiary">25% reduction in sick days through improved employee wellness</p>
                 </div>
                 
                 {/* Productivity Value */}
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4 border-l-4 border-blue-500">
-                  <div className="text-2xl font-bold text-gray-800 mb-2">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
                   </div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Estimated Annual Value from Increased Productivity</h3>
-                  <p className="text-sm text-gray-600">10% productivity boost from enhanced employee engagement and health</p>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Value from Increased Productivity</h3>
+                  <p className="text-sm font-body text-barn-tertiary">10% productivity boost from enhanced employee engagement and health</p>
                 </div>
                 
                 {/* Healthcare Savings */}
-                <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-4 border-l-4 border-purple-500">
-                  <div className="text-2xl font-bold text-gray-800 mb-2">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.healthcareReduction || 0)}
                   </div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Estimated Annual Savings from Reduced Healthcare Costs</h3>
-                  <p className="text-sm text-gray-600">15% reduction in healthcare expenses through preventive wellness measures</p>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Healthcare Costs</h3>
+                  <p className="text-sm font-body text-barn-tertiary">15% reduction in healthcare expenses through preventive wellness measures</p>
                 </div>
                 
                 {/* Turnover Savings */}
-                <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg p-4 border-l-4 border-orange-500">
-                  <div className="text-2xl font-bold text-gray-800 mb-2">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.turnoverReduction || 0)}
                   </div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Estimated Annual Savings from Reduced Turnover</h3>
-                  <p className="text-sm text-gray-600">20% reduction in employee turnover through improved workplace satisfaction</p>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Turnover</h3>
+                  <p className="text-sm font-body text-barn-tertiary">20% reduction in employee turnover through improved workplace satisfaction</p>
                 </div>
                 
                 {/* Total Impact */}
-                <div className="bg-gradient-to-r from-green-100 to-blue-100 rounded-lg p-6 border-2 border-green-500 shadow-lg">
-                  <div className="text-3xl font-bold mb-2 text-green-700">
+                <div className="bg-barn-accent rounded-barn p-6 border-2 border-barn-primary shadow-barn">
+                  <div className="text-3xl font-headline font-bold mb-2 text-barn-primary">
                     {formatCurrency(calculations.totalSavings || 0)}
                   </div>
-                  <h3 className="font-semibold text-gray-700 mb-1">Total Estimated Annual Financial Impact</h3>
-                  <p className="text-sm text-gray-600 mb-3">Combined financial benefit from your comprehensive wellness program</p>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Total Estimated Annual Financial Impact</h3>
+                  <p className="text-sm font-body text-barn-tertiary mb-3">Combined financial benefit from your comprehensive wellness program</p>
                   
                   {/* Program Cost Breakdown */}
-                  <div className="bg-white rounded p-4 mb-3 text-sm shadow-inner">
+                  <div className="bg-barn-secondary rounded-barn p-4 mb-3 text-sm shadow-inner">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-600">Barn Gym Corporate Wellness Investment:</span>
-                      <span className="font-semibold text-gray-800">-{formatCurrency(calculations.annualProgramCost || 0)}</span>
+                      <span className="font-body text-barn-tertiary">Barn Gym Corporate Wellness Investment:</span>
+                      <span className="font-body font-semibold text-barn-tertiary">-{formatCurrency(calculations.annualProgramCost || 0)}</span>
                     </div>
-                    <div className="text-xs text-gray-500 mb-3">
+                    <div className="text-xs font-body text-barn-tertiary mb-3">
                       £200* per employee per month ({calculatorData.employees} employees × £200 × 12 months)
                     </div>
                     
                     {/* Tax Deduction Info */}
-                    <div className="bg-green-50 border border-green-200 rounded p-3 mb-3">
+                    <div className="bg-barn-accent border border-barn-primary rounded-barn p-3 mb-3">
                       <div className="flex justify-between items-center text-xs mb-1">
-                        <span className="text-green-700">Less: Tax Relief (25% Corp Tax):</span>
-                        <span className="font-semibold text-green-700">+{formatCurrency((calculations.annualProgramCost || 0) * 0.25)}</span>
+                        <span className="font-body text-barn-primary">Less: Tax Relief (25% Corp Tax):</span>
+                        <span className="font-body font-semibold text-barn-primary">+{formatCurrency((calculations.annualProgramCost || 0) * 0.25)}</span>
                       </div>
-                      <div className="flex justify-between items-center text-xs border-t border-green-200 pt-2 mt-2">
-                        <span className="font-semibold text-green-700">Net After-Tax Cost:</span>
-                        <span className="font-bold text-green-700">-{formatCurrency((calculations.annualProgramCost || 0) * 0.75)}</span>
+                      <div className="flex justify-between items-center text-xs border-t border-barn-primary pt-2 mt-2">
+                        <span className="font-body font-semibold text-barn-primary">Net After-Tax Cost:</span>
+                        <span className="font-body font-bold text-barn-primary">-{formatCurrency((calculations.annualProgramCost || 0) * 0.75)}</span>
                       </div>
                     </div>
                     
-                    <div className="flex justify-between items-center border-t pt-3 mt-3">
-                      <span className="font-semibold text-gray-700">Net Annual Benefit:</span>
-                      <span className="font-bold text-green-700">{formatCurrency((calculations.totalSavings || 0) - ((calculations.annualProgramCost || 0) * 0.75))}</span>
+                    <div className="flex justify-between items-center border-t border-barn-accent pt-3 mt-3">
+                      <span className="font-body font-semibold text-barn-tertiary">Net Annual Benefit:</span>
+                      <span className="font-body font-bold text-barn-primary">{formatCurrency((calculations.totalSavings || 0) - ((calculations.annualProgramCost || 0) * 0.75))}</span>
                     </div>
                   </div>
                   
                   {/* ROI Percentage */}
-                  <div className="mt-3 pt-3 border-t border-green-200">
-                    <div className="text-lg font-semibold text-green-700">
+                  <div className="mt-3 pt-3 border-t border-barn-accent">
+                    <div className="text-lg font-headline font-semibold text-barn-primary">
                       ROI: {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                     </div>
-                    <p className="text-xs text-gray-600">Return on Investment after 25% UK Corporation Tax Relief (Net cost: £{Math.round((parseFloat(calculatorData.employees) * 200 * 12) * 0.75).toLocaleString()}/year)</p>
+                    <p className="text-xs font-body text-barn-tertiary">Return on Investment after 25% UK Corporation Tax Relief (Net cost: £{Math.round((parseFloat(calculatorData.employees) * 200 * 12) * 0.75).toLocaleString()}/year)</p>
                   </div>
                 </div>
               </div>
@@ -658,27 +658,27 @@ const ROICalculator = () => {
           </div>
 
           {/* Calculation Benchmarks */}
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-200 p-6 mb-8 shadow-md">
-            <h4 className="font-semibold text-blue-800 mb-4 text-center flex items-center justify-center">
-              <Award className="w-5 h-5 mr-2" />
+          <div className="bg-barn-secondary rounded-barn border border-barn-accent p-6 mb-barn-section shadow-barn">
+            <h4 className="font-headline font-semibold text-barn-primary mb-4 text-center flex items-center justify-center">
+              <Award className="w-6 h-6 mr-2" />
               Calculation Benchmarks
             </h4>
             <div className="grid md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white p-4 rounded-lg">
-                <div className="text-2xl font-bold text-blue-700">25%</div>
-                <div className="text-sm text-blue-600">Absenteeism Reduction</div>
+              <div className="bg-barn-accent p-4 rounded-barn">
+                <div className="text-2xl font-headline font-bold text-barn-primary">25%</div>
+                <div className="text-sm font-body text-barn-tertiary">Absenteeism Reduction</div>
               </div>
-              <div className="bg-white p-4 rounded-lg">
-                <div className="text-2xl font-bold text-blue-700">10%</div>
-                <div className="text-sm text-blue-600">Productivity Increase</div>
+              <div className="bg-barn-accent p-4 rounded-barn">
+                <div className="text-2xl font-headline font-bold text-barn-primary">10%</div>
+                <div className="text-sm font-body text-barn-tertiary">Productivity Increase</div>
               </div>
-              <div className="bg-white p-4 rounded-lg">
-                <div className="text-2xl font-bold text-blue-700">15%</div>
-                <div className="text-sm text-blue-600">Healthcare Cost Reduction</div>
+              <div className="bg-barn-accent p-4 rounded-barn">
+                <div className="text-2xl font-headline font-bold text-barn-primary">15%</div>
+                <div className="text-sm font-body text-barn-tertiary">Healthcare Cost Reduction</div>
               </div>
-              <div className="bg-white p-4 rounded-lg">
-                <div className="text-2xl font-bold text-blue-700">20%</div>
-                <div className="text-sm text-blue-600">Turnover Reduction</div>
+              <div className="bg-barn-accent p-4 rounded-barn">
+                <div className="text-2xl font-headline font-bold text-barn-primary">20%</div>
+                <div className="text-sm font-body text-barn-tertiary">Turnover Reduction</div>
               </div>
             </div>
           </div>
