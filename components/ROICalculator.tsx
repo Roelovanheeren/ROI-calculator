@@ -249,7 +249,7 @@ const ROICalculator = () => {
   // Calculator Step
   if (step === 'calculator') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
+      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -260,61 +260,61 @@ const ROICalculator = () => {
                 className="h-16 w-auto"
               />
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-3 gradient-text">
+            <h1 className="text-4xl font-headline font-bold text-barn-primary mb-3">
               Calculate Your Wellness ROI
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
+            <p className="text-xl font-body text-barn-tertiary max-w-2xl mx-auto mb-6">
               Discover the financial impact of investing in employee wellness. 
               Get a personalized analysis in under 2 minutes.
             </p>
             
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm text-gray-600">
+            <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm text-barn-tertiary">
               <div className="flex items-center">
-                <Shield className="w-4 h-4 text-green-600 mr-2" />
-                <span>100% Confidential</span>
+                <Shield className="w-6 h-6 text-barn-primary mr-2" />
+                <span className="font-body">100% Confidential</span>
               </div>
               <div className="flex items-center">
-                <Clock className="w-4 h-4 text-blue-600 mr-2" />
-                <span>2 Minutes to Complete</span>
+                <Clock className="w-6 h-6 text-barn-primary mr-2" />
+                <span className="font-body">2 Minutes to Complete</span>
               </div>
               <div className="flex items-center">
-                <Award className="w-4 h-4 text-purple-600 mr-2" />
-                <span>Industry-Leading Results</span>
+                <Award className="w-6 h-6 text-barn-primary mr-2" />
+                <span className="font-body">Industry-Leading Results</span>
               </div>
             </div>
             
             {/* Sweet Spot Guidance */}
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200 rounded-lg p-6 mb-6 max-w-3xl mx-auto shadow-barn">
-              <h3 className="font-semibold text-blue-800 mb-3 flex items-center justify-center">
-                <Star className="w-5 h-5 mr-2" />
+            <div className="bg-barn-secondary border border-barn-accent rounded-barn p-barn-content mb-barn-section max-w-3xl mx-auto shadow-barn">
+              <h3 className="font-headline font-semibold text-barn-primary mb-3 flex items-center justify-center">
+                <Star className="w-6 h-6 mr-2" />
                 💡 Best Results For:
               </h3>
-              <div className="grid md:grid-cols-3 gap-4 text-sm text-blue-700">
-                <div className="text-center bg-white p-3 rounded-lg">
-                  <div className="font-semibold">Mid-Senior Professionals</div>
-                  <div>Average salary £55k+</div>
+              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div className="text-center bg-barn-accent p-3 rounded-barn">
+                  <div className="font-body font-semibold text-barn-tertiary">Mid-Senior Professionals</div>
+                  <div className="font-body text-barn-tertiary">Average salary £55k+</div>
                 </div>
-                <div className="text-center bg-white p-3 rounded-lg">
-                  <div className="font-semibold">Growth Companies</div>
-                  <div>20%+ annual turnover</div>
+                <div className="text-center bg-barn-accent p-3 rounded-barn">
+                  <div className="font-body font-semibold text-barn-tertiary">Growth Companies</div>
+                  <div className="font-body text-barn-tertiary">20%+ annual turnover</div>
                 </div>
-                <div className="text-center bg-white p-3 rounded-lg">
-                  <div className="font-semibold">Established Teams</div>
-                  <div>100+ employees</div>
+                <div className="text-center bg-barn-accent p-3 rounded-barn">
+                  <div className="font-body font-semibold text-barn-tertiary">Established Teams</div>
+                  <div className="font-body text-barn-tertiary">100+ employees</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Calculator Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-green-100">
+          <div className="barn-content-box">
             <form onSubmit={handleCalculatorSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Number of Employees */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <Users className="inline w-4 h-4 mr-2 text-green-600" />
+                  <label className="block text-sm font-body font-semibold text-barn-tertiary mb-2">
+                    <Users className="inline w-6 h-6 mr-2 text-barn-primary" />
                     Number of Employees *
                   </label>
                   <input
@@ -323,15 +323,15 @@ const ROICalculator = () => {
                     min="1"
                     value={calculatorData.employees}
                     onChange={(e) => setCalculatorData({...calculatorData, employees: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-barn-accent rounded-barn focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 font-body"
                     placeholder="e.g., 200 (sweet spot: 100+)"
                   />
                 </div>
 
                 {/* Average Annual Salary */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <TrendingUp className="inline w-4 h-4 mr-2 text-green-600" />
+                  <label className="block text-sm font-body font-semibold text-barn-tertiary mb-2">
+                    <TrendingUp className="inline w-6 h-6 mr-2 text-barn-primary" />
                     Average Annual Salary (GBP) *
                   </label>
                   <input
@@ -340,7 +340,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.salary}
                     onChange={(e) => setCalculatorData({...calculatorData, salary: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-barn-accent rounded-barn focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 font-body"
                     placeholder="e.g., 55000 (sweet spot: £55k+)"
                   />
                 </div>
@@ -418,9 +418,9 @@ const ROICalculator = () => {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-600 to-barn-green-700 hover:from-green-700 hover:to-barn-green-800 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="w-full bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg shadow-barn hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  <Calculator className="mr-3 w-5 h-5" />
+                  <Calculator className="mr-3 w-6 h-6" />
                   Calculate My Wellness ROI
                 </button>
               </div>

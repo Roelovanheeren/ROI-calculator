@@ -1,8 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Raleway, Red_Rose } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const raleway = Raleway({ 
+  subsets: ['latin'],
+  variable: '--font-raleway',
+})
+
+const redRose = Red_Rose({ 
+  subsets: ['latin'],
+  variable: '--font-red-rose',
+})
 
 export const metadata: Metadata = {
   title: 'Barn Gym ROI Calculator - Calculate Your Corporate Wellness Investment Return',
@@ -38,7 +46,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${raleway.variable} ${redRose.variable} font-body`}>
         {children}
       </body>
     </html>
