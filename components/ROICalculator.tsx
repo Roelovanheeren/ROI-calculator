@@ -444,7 +444,7 @@ const ROICalculator = () => {
   // Results Step (shows immediate value)
   if (step === 'results') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
+      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header with Results */}
           <div className="text-center mb-8">
@@ -463,11 +463,11 @@ const ROICalculator = () => {
             </p>
             
             {/* Top CTA for Detailed Report */}
-            <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-6 mb-8 text-white shadow-barn">
-              <h2 className="text-2xl font-bold mb-3">
+            <div className="bg-gradient-to-r from-barn-primary to-black rounded-2xl p-6 mb-8 text-white shadow-barn">
+              <h2 className="text-2xl font-headline font-bold mb-3">
                 📊 Want a Detailed Report for Your Board?
               </h2>
-              <p className="text-lg mb-4 opacity-90">
+              <p className="text-lg font-body mb-4 opacity-90">
                 Get a comprehensive business case with industry benchmarks, implementation roadmap, 
                 and presentation-ready slides sent directly to your inbox.
               </p>
@@ -476,12 +476,12 @@ const ROICalculator = () => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   setStep('gate');
                 }}
-                className="bg-white text-green-700 font-bold py-3 px-8 rounded-lg hover:bg-gray-50 transition-colors duration-200 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-barn-secondary text-barn-primary font-headline font-bold py-3 px-8 rounded-barn hover:bg-barn-accent transition-colors duration-200 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <Mail className="mr-2" />
                 Get My Free Detailed Report
               </button>
-              <p className="text-sm mt-3 opacity-80">
+              <p className="text-sm font-body mt-3 opacity-80">
                 Transform these numbers into a presentation your CFO will approve
               </p>
             </div>
@@ -742,7 +742,7 @@ const ROICalculator = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setStep('gate');
               }}
-              className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center text-lg mx-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-gradient-to-r from-barn-primary to-black hover:from-barn-green-600 hover:to-gray-900 text-barn-secondary font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg mx-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               <Download className="mr-2" />
               Get My Detailed Business Case Report (Free)
@@ -770,7 +770,7 @@ const ROICalculator = () => {
   // Email Gate Step
   if (step === 'gate') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
+      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Results Preview */}
           <div className="text-center mb-8">
@@ -945,7 +945,7 @@ const ROICalculator = () => {
                 <button
                   type="submit"
                   disabled={isGeneratingReport}
-                  className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 disabled:bg-gray-400 text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none"
+                  className="w-full bg-gradient-to-r from-barn-primary to-black hover:from-barn-green-600 hover:to-gray-900 disabled:bg-gray-400 text-barn-secondary font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none"
                 >
                   {isGeneratingReport ? (
                     <>
@@ -976,7 +976,7 @@ const ROICalculator = () => {
     const leadScore = calculateLeadScore();
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
+      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-green-600 mb-4" />
@@ -1021,7 +1021,7 @@ const ROICalculator = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={() => window.open('https://calendly.com/barn-gym/consultation', '_blank')}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <Phone className="mr-2 w-4 h-4" />
                 Book Free Consultation
@@ -1029,7 +1029,7 @@ const ROICalculator = () => {
               
               <button 
                 onClick={() => window.open('mailto:guy@barn-gym.com?subject=Free Trial Request - ' + contactData.companyName, '_blank')}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <Mail className="mr-2 w-4 h-4" />
                 Start Free Trial
