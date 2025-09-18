@@ -100,8 +100,8 @@ const ROICalculator = () => {
       productivityGain: currentCosts.productivity * 0.10 // 10% improvement
     };
 
-    // Barn Gym Corporate Wellness Investment (£200 per employee per month)
-    const monthlyProgramCost = employees * 200;
+    // Barn Gym Corporate Wellness Investment (£175 per employee per month)
+    const monthlyProgramCost = employees * 175;
     const annualProgramCost = monthlyProgramCost * 12;
     
     const totalCurrentCosts = Object.values(currentCosts).reduce((sum, cost) => sum + cost, 0);
@@ -348,7 +348,7 @@ const ROICalculator = () => {
                 {/* Annual Sick Days */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <FileText className="inline w-4 h-4 mr-2 text-green-600" />
+                    <FileText className="inline w-4 h-4 mr-2 text-barn-primary" />
                     Average Annual Sick Days per Employee *
                   </label>
                   <input
@@ -366,7 +366,7 @@ const ROICalculator = () => {
                 {/* Turnover Rate */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <Calculator className="inline w-4 h-4 mr-2 text-green-600" />
+                    <Calculator className="inline w-4 h-4 mr-2 text-barn-primary" />
                     Current Turnover Rate (%) *
                   </label>
                   <input
@@ -385,7 +385,7 @@ const ROICalculator = () => {
                 {/* Healthcare Cost */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <Building className="inline w-4 h-4 mr-2 text-green-600" />
+                    <Building className="inline w-4 h-4 mr-2 text-barn-primary" />
                     Average Annual Healthcare Cost per Employee (GBP)
                   </label>
                   <input
@@ -401,7 +401,7 @@ const ROICalculator = () => {
                 {/* Current Wellness Spending */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    <Calculator className="inline w-4 h-4 mr-2 text-green-600" />
+                    <Calculator className="inline w-4 h-4 mr-2 text-barn-primary" />
                     Current Annual Wellness Spending (GBP)
                   </label>
                   <input
@@ -432,8 +432,8 @@ const ROICalculator = () => {
             <p className="text-sm text-gray-500 mb-4">Trusted by companies across the UK</p>
             <div className="flex justify-center space-x-8 text-gray-400 text-xs">
               <span>95% see positive ROI</span>
-              <span>£6.30 return per £1 invested</span>
-              <span>20% higher retention</span>
+              <span>Average 100%+ return on investment</span>
+              <span>20% higher employee retention</span>
             </div>
           </div>
         </div>
@@ -455,10 +455,10 @@ const ROICalculator = () => {
                 className="h-16 w-auto"
               />
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-3 gradient-text">
+            <h1 className="text-4xl font-headline font-bold text-barn-primary mb-3">
               Your Wellness ROI Results
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
+            <p className="text-xl font-body text-barn-tertiary max-w-2xl mx-auto mb-6">
               Here's what a corporate wellness program could save your company annually
             </p>
             
@@ -532,7 +532,7 @@ const ROICalculator = () => {
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
             {/* Left Column: Company Information */}
             <div className="bg-white rounded-2xl shadow-md p-6 border border-green-100">
-              <h2 className="text-2xl font-bold mb-6 text-green-700 flex items-center">
+              <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <Building className="w-6 h-6 mr-2" />
                 Your Company Information
               </h2>
@@ -567,7 +567,7 @@ const ROICalculator = () => {
 
             {/* Right Column: Results */}
             <div className="bg-white rounded-2xl shadow-md p-6 border border-green-100">
-              <h2 className="text-2xl font-bold mb-6 text-green-700 flex items-center">
+              <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <TrendingUp className="w-6 h-6 mr-2" />
                 Your Estimated Results
               </h2>
@@ -624,7 +624,7 @@ const ROICalculator = () => {
                       <span className="font-body font-semibold text-barn-tertiary">-{formatCurrency(calculations.annualProgramCost || 0)}</span>
                     </div>
                     <div className="text-xs font-body text-barn-tertiary mb-3">
-                      £200* per employee per month ({calculatorData.employees} employees × £200 × 12 months)
+                      £175* per employee per month ({calculatorData.employees} employees × £175 × 12 months)
                     </div>
                     
                     {/* Tax Deduction Info */}
@@ -650,7 +650,7 @@ const ROICalculator = () => {
                     <div className="text-lg font-headline font-semibold text-barn-primary">
                       ROI: {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                     </div>
-                    <p className="text-xs font-body text-barn-tertiary">Return on Investment after 25% UK Corporation Tax Relief (Net cost: £{Math.round((parseFloat(calculatorData.employees) * 200 * 12) * 0.75).toLocaleString()}/year)</p>
+                    <p className="text-xs font-body text-barn-tertiary">Return on Investment after 25% UK Corporation Tax Relief (Net cost: £{Math.round((parseFloat(calculatorData.employees) * 175 * 12) * 0.75).toLocaleString()}/year)</p>
                   </div>
                 </div>
               </div>
@@ -685,8 +685,8 @@ const ROICalculator = () => {
 
           {/* Gate to Detailed Report */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-green-100 text-center">
-            <FileText className="mx-auto w-16 h-16 text-green-600 mb-4" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <FileText className="mx-auto w-16 h-16 text-barn-primary mb-4" />
+            <h2 className="text-3xl font-headline font-bold text-barn-primary mb-3">
               Want a Detailed Report for Your Board?
             </h2>
             <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
@@ -700,37 +700,37 @@ const ROICalculator = () => {
               <div className="grid md:grid-cols-2 gap-4 text-left">
                 <div className="space-y-2">
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Executive summary with key findings</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Detailed cost breakdown analysis</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Industry benchmark comparisons</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Peer company case studies</span>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Implementation timeline & roadmap</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Risk mitigation strategies</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Presentation-ready slides</span>
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
                     <span className="text-sm text-gray-700">Free trial offer details</span>
                   </div>
                 </div>
@@ -778,13 +778,13 @@ const ROICalculator = () => {
               Your Initial Results Are Ready!
             </h1>
             <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-green-100">
-              <div className="text-6xl font-bold text-green-600 mb-2">
+              <div className="text-6xl font-bold text-barn-primary mb-2">
                 {formatCurrency(calculations.totalSavings || 0)}
               </div>
               <p className="text-xl text-gray-700 mb-4">Potential Annual Savings</p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
                 <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-barn-primary">
                     {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                   </div>
                   <div className="text-sm text-gray-600">ROI</div>
@@ -808,8 +808,8 @@ const ROICalculator = () => {
           {/* Email Gate */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-green-100">
             <div className="text-center mb-6">
-              <FileText className="mx-auto w-16 h-16 text-green-600 mb-4" />
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">
+              <FileText className="mx-auto w-16 h-16 text-barn-primary mb-4" />
+              <h2 className="text-3xl font-headline font-bold text-barn-primary mb-3">
                 Want the Full Analysis?
               </h2>
               <p className="text-xl text-gray-600 mb-6">
@@ -979,7 +979,7 @@ const ROICalculator = () => {
       <div className="min-h-screen bg-barn-accent py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <CheckCircle className="mx-auto w-20 h-20 text-green-600 mb-4" />
+            <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
             <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
               Your Report is Ready!
             </h1>
@@ -990,13 +990,13 @@ const ROICalculator = () => {
 
           {/* Report Summary */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-green-100">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <h2 className="text-2xl font-headline font-bold text-barn-primary mb-6 text-center">
               Executive Summary for {contactData.companyName}
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-green-50 p-6 rounded-lg text-center border border-green-200">
-                <div className="text-3xl font-bold text-green-600 mb-2">
+                <div className="text-3xl font-bold text-barn-primary mb-2">
                   {formatCurrency(calculations.totalSavings)}
                 </div>
                 <div className="text-sm text-gray-700">Total Annual Savings</div>
@@ -1047,7 +1047,7 @@ const ROICalculator = () => {
                 <span className="text-gray-600">Your detailed report is on its way</span>
               </div>
               <div className="flex flex-col items-center">
-                <Phone className="w-8 h-8 text-green-600 mb-2" />
+                <Phone className="w-8 h-8 text-barn-primary mb-2" />
                 <span className="font-medium">Book a Call</span>
                 <span className="text-gray-600">Discuss your specific needs</span>
               </div>
