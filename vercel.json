@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "GHL_API_KEY": "@ghl-api-key",
+    "EMAIL_USER": "@email-user",
+    "EMAIL_PASSWORD": "@email-password"
+  },
+  "functions": {
+    "app/api/generate-pdf/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/send-email/route.ts": {
+      "maxDuration": 30
+    },
+    "app/api/submit-lead/route.ts": {
+      "maxDuration": 30
+    }
+  }
+}
