@@ -2,7 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;500;600;700&display=swap');
+/* Barn Gym Red Rose Font */
+@font-face {
+  font-family: 'Red Rose';
+  src: url('/fonts/Red_Rose (1)/static/RedRose-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Rose';
+  src: url('/fonts/Red_Rose (1)/static/RedRose-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Rose';
+  src: url('/fonts/Red_Rose (1)/static/RedRose-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Rose';
+  src: url('/fonts/Red_Rose (1)/static/RedRose-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Raleway (keeping Google Fonts for now - you can add Raleway files later if needed) */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
 
 :root {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Raleway, Red_Rose } from 'next/font/google'
+import { Raleway } from 'next/font/google'
 import './globals.css'
 
 const raleway = Raleway({ 
@@ -7,10 +7,7 @@ const raleway = Raleway({
   variable: '--font-raleway',
 })
 
-const redRose = Red_Rose({ 
-  subsets: ['latin'],
-  variable: '--font-red-rose',
-})
+// Red Rose is now loaded locally from /public/fonts/
 
 export const metadata: Metadata = {
   title: 'Barn Gym ROI Calculator - Calculate Your Corporate Wellness Investment Return',
@@ -46,7 +43,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${raleway.variable} ${redRose.variable} font-body`}>
+      <body className={`${raleway.variable} font-body`}>
         {children}
       </body>
     </html>
