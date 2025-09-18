@@ -987,7 +987,7 @@ const ROICalculator = () => {
               Executive Summary for {contactData.companyName}
             </h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-green-50 p-6 rounded-lg text-center border border-green-200">
                 <div className="text-3xl font-bold text-green-600 mb-2">
                   {formatCurrency(calculations.totalSavings)}
@@ -1007,13 +1007,6 @@ const ROICalculator = () => {
                   {calculations.paybackMonths}
                 </div>
                 <div className="text-sm text-gray-700">Months to Payback</div>
-              </div>
-              
-              <div className="bg-orange-50 p-6 rounded-lg text-center border border-orange-200">
-                <div className="text-3xl font-bold text-orange-600 mb-2">
-                  {leadScore}
-                </div>
-                <div className="text-sm text-gray-700">Lead Quality Score</div>
               </div>
             </div>
 
