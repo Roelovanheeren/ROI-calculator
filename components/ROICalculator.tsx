@@ -74,6 +74,8 @@ const ROICalculator = () => {
   const [isGeneratingReport, setIsGeneratingReport] = useState(false);
   const [contactId, setContactId] = useState<string | null>(null);
   const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
+  const [generationProgress, setGenerationProgress] = useState(0);
+  const [generationStage, setGenerationStage] = useState('');
 
   // Calculate ROI metrics
   const calculateROI = (): Calculations => {
@@ -92,7 +94,7 @@ const ROICalculator = () => {
       sickDays: employees * sickDays * dailySalary,
       turnover: employees * (turnoverRate / 100) * (salary * 0.75), // 75% of salary replacement cost
       healthcare: employees * healthcareCost,
-      productivity: employees * salary * 0.15 // 15% productivity loss estimate
+      productivity: 0 // No current productivity costs - wellness creates new value
     };
 
     // Projected savings (based on industry benchmarks)
@@ -100,7 +102,7 @@ const ROICalculator = () => {
       sickDaysReduction: currentCosts.sickDays * 0.25, // 25% reduction
       turnoverReduction: currentCosts.turnover * 0.20, // 20% reduction
       healthcareReduction: currentCosts.healthcare * 0.15, // 15% reduction
-      productivityGain: currentCosts.productivity * 0.10 // 10% improvement
+      productivityGain: employees * salary * 0.10 // 10% productivity improvement on total payroll
     };
 
     // Barn Gym Corporate Wellness Investment (£175 per employee per month)
@@ -177,8 +179,18 @@ const ROICalculator = () => {
     
     console.log('🔧 Validation passed, submitting to API...');
     setIsGeneratingReport(true);
+    setGenerationProgress(0);
+    setGenerationStage('Initializing...');
+
+    // Simulate progress stages
+    const updateProgress = (progress: number, stage: string) => {
+      setGenerationProgress(progress);
+      setGenerationStage(stage);
+    };
 
     try {
+      updateProgress(10, 'Analyzing your data...');
+      
       const payload = {
         calculatorData,
         contactData,
@@ -187,6 +199,8 @@ const ROICalculator = () => {
       };
       
       console.log('🔧 Sending payload:', payload);
+      
+      updateProgress(25, 'Calculating your ROI metrics...');
       
       // Send data to API
       const response = await fetch('/api/submit-lead', {
@@ -200,6 +214,18 @@ const ROICalculator = () => {
       console.log('🔧 API Response status:', response.status);
       
       if (response.ok) {
+        updateProgress(50, 'Building your custom report...');
+        
+        // Add small delay to show progress
+        await new Promise(resolve => setTimeout(resolve, 500));
+        updateProgress(65, 'Personalizing your presentation...');
+        
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        updateProgress(80, 'Finalizing your document...');
+        
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        updateProgress(95, 'Almost ready...');
+        
         const result = await response.json();
         console.log('🔧 API Response data:', result);
         console.log('✅ Lead submitted successfully');
@@ -209,6 +235,9 @@ const ROICalculator = () => {
           setContactId(result.ghlResponse.contactId);
           console.log('✅ Contact ID captured:', result.ghlResponse.contactId);
         }
+        
+        updateProgress(100, 'Complete!');
+        await new Promise(resolve => setTimeout(resolve, 500));
         
         setStep('report');
       } else {
@@ -221,6 +250,8 @@ const ROICalculator = () => {
       alert('There was an error submitting your information. Please try again.');
     } finally {
       setIsGeneratingReport(false);
+      setGenerationProgress(0);
+      setGenerationStage('');
     }
   };
 
@@ -361,11 +392,11 @@ const ROICalculator = () => {
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="flex flex-col items-center">
                     <Calculator className="w-8 h-8 text-white mb-2" />
-                    <span className="text-sm text-white">Cost breakdown</span>
+                    <span className="text-sm text-white">Financial Overview</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <TrendingUp className="w-8 h-8 text-white mb-2" />
-                    <span className="text-sm text-white">Implementation timeline</span>
+                    <span className="text-sm text-white">Barn Gym Corporate Wellness Details</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <FileText className="w-8 h-8 text-white mb-2" />
@@ -427,7 +458,7 @@ const ROICalculator = () => {
                     step="0.1"
                     value={calculatorData.sickDays}
                     onChange={(e) => setCalculatorData({...calculatorData, sickDays: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="e.g., 7.8 (UK average)"
                   />
                 </div>
@@ -446,7 +477,7 @@ const ROICalculator = () => {
                     step="0.1"
                     value={calculatorData.turnoverRate}
                     onChange={(e) => setCalculatorData({...calculatorData, turnoverRate: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="e.g., 20 (sweet spot: 20%+)"
                   />
                 </div>
@@ -462,7 +493,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.healthcareCost}
                     onChange={(e) => setCalculatorData({...calculatorData, healthcareCost: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="e.g., 2500"
                   />
                 </div>
@@ -478,7 +509,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.currentWellnessCost}
                     onChange={(e) => setCalculatorData({...calculatorData, currentWellnessCost: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="e.g., 5000 (enter 0 if none)"
                   />
                 </div>
@@ -487,9 +518,10 @@ const ROICalculator = () => {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg shadow-barn hover:shadow-xl transform hover:-translate-y-1"
+                  className="w-full text-white font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg shadow-barn hover:shadow-xl transform hover:-translate-y-1 border-2 border-white"
+                  style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}
                 >
-                  <Calculator className="mr-3 w-6 h-6" />
+                  <Calculator className="mr-3 w-6 h-6 text-white" />
                   Calculate My Wellness ROI
                 </button>
               </div>
@@ -532,11 +564,11 @@ const ROICalculator = () => {
             </p>
             
             {/* Top CTA for Detailed Report */}
-            <div className="bg-white rounded-2xl p-6 mb-8 border-2 border-barn-primary shadow-barn">
-              <h2 className="text-2xl font-headline font-bold mb-3 text-barn-primary">
-                📊 Want a Detailed Report for Your Board?
+            <div className="rounded-2xl p-6 mb-8 border-2 border-white shadow-barn" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+              <h2 className="text-2xl font-headline font-bold mb-3 text-white">
+                Want a Detailed Report for Your Board?
               </h2>
-              <p className="text-lg font-body mb-4 text-gray-700">
+              <p className="text-lg font-body mb-4 text-white">
                 Get a comprehensive business case with industry benchmarks, implementation roadmap, 
                 and presentation-ready slides sent directly to your inbox.
               </p>
@@ -545,12 +577,12 @@ const ROICalculator = () => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   setStep('gate');
                 }}
-                className="bg-barn-primary text-white font-headline font-bold py-3 px-8 rounded-barn hover:bg-green-700 transition-colors duration-200 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-white text-barn-primary font-headline font-bold py-3 px-8 rounded-barn hover:bg-gray-100 transition-colors duration-200 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                <Mail className="mr-2" />
+                <Mail className="mr-2 text-barn-primary" />
                 Get My Free Detailed Report
               </button>
-              <p className="text-sm font-body mt-3 text-gray-600">
+              <p className="text-sm font-body mt-3 text-white">
                 Transform these numbers into a presentation your CFO will approve
               </p>
             </div>
@@ -777,25 +809,25 @@ const ROICalculator = () => {
             <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
               Your Initial Results Are Ready!
             </h1>
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-green-100">
+            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
               <div className="text-6xl font-bold text-barn-primary mb-2">
                 {formatCurrency(calculations.totalSavings || 0)}
               </div>
               <p className="text-xl text-gray-700 mb-4">Potential Annual Savings</p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="p-6 rounded-lg border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                   </div>
                   <div className="text-sm text-white">ROI</div>
                 </div>
-                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="p-6 rounded-lg border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
-                    {formatCurrency(calculations.yearlyProductivityGain || 0)}
+                    {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
                   </div>
                   <div className="text-sm text-white">Yearly Productivity Gain</div>
                 </div>
-                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="p-6 rounded-lg border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {formatCurrency(calculations.netSavings || 0)}
                   </div>
@@ -806,7 +838,7 @@ const ROICalculator = () => {
           </div>
 
           {/* Email Gate */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-green-100">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-6">
               <FileText className="mx-auto w-16 h-16 text-barn-primary mb-4" />
               <h2 className="text-3xl font-headline font-bold text-barn-primary mb-3">
@@ -829,7 +861,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.fullName}
                     onChange={(e) => setContactData({...contactData, fullName: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="John Smith"
                   />
                 </div>
@@ -843,7 +875,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.workEmail}
                     onChange={(e) => setContactData({...contactData, workEmail: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -857,7 +889,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.companyName}
                     onChange={(e) => setContactData({...contactData, companyName: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="Your Company Ltd"
                   />
                 </div>
@@ -871,7 +903,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.jobTitle}
                     onChange={(e) => setContactData({...contactData, jobTitle: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="HR Director"
                   />
                 </div>
@@ -883,7 +915,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.companySize}
                     onChange={(e) => setContactData({...contactData, companySize: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                   >
                     <option value="">Select size</option>
                     <option value="50-200">50-200 employees</option>
@@ -900,7 +932,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.timeline}
                     onChange={(e) => setContactData({...contactData, timeline: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                   >
                     <option value="">Select timeline</option>
                     <option value="Immediate">Immediate (within 1 month)</option>
@@ -917,7 +949,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.currentInitiatives}
                     onChange={(e) => setContactData({...contactData, currentInitiatives: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                   >
                     <option value="">Select current initiatives</option>
                     <option value="None">None</option>
@@ -935,7 +967,7 @@ const ROICalculator = () => {
                     type="text"
                     value={contactData.industry}
                     onChange={(e) => setContactData({...contactData, industry: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
                     placeholder="e.g., Technology, Finance, Healthcare"
                   />
                 </div>
@@ -945,16 +977,26 @@ const ROICalculator = () => {
                 <button
                   type="submit"
                   disabled={isGeneratingReport}
-                  className="w-full bg-gradient-to-r from-barn-primary to-black hover:from-barn-green-600 hover:to-gray-900 disabled:bg-gray-400 text-barn-secondary font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none"
+                  className="w-full disabled:bg-gray-400 text-white font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none border-2 border-white"
+                  style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}
                 >
                   {isGeneratingReport ? (
-                    <>
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
-                      Generating Your Report...
-                    </>
+                    <div className="w-full">
+                      <div className="flex items-center justify-center mb-2">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                        <span className="text-sm">{generationStage}</span>
+                      </div>
+                      <div className="w-full bg-white bg-opacity-20 rounded-full h-2">
+                        <div 
+                          className="bg-white h-2 rounded-full transition-all duration-300 ease-out"
+                          style={{ width: `${generationProgress}%` }}
+                        ></div>
+                      </div>
+                      <div className="text-xs mt-1 opacity-80">{generationProgress}% complete</div>
+                    </div>
                   ) : (
                     <>
-                      <Download className="mr-2" />
+                      <Download className="mr-2 text-white" />
                       Get My Free ROI Report
                     </>
                   )}
@@ -983,37 +1025,34 @@ const ROICalculator = () => {
             <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
               Your Report is Ready!
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              We've sent your comprehensive ROI analysis to {contactData.workEmail}
-            </p>
           </div>
 
           {/* Report Summary */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border border-green-100">
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-2xl font-headline font-bold text-barn-primary mb-6 text-center">
               Executive Summary for {contactData.companyName}
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-green-50 p-6 rounded-lg text-center border border-green-200">
-                <div className="text-3xl font-bold text-barn-primary mb-2">
+              <div className="p-6 rounded-lg text-center border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="text-3xl font-bold text-white mb-2">
                   {formatCurrency(calculations.totalSavings)}
                 </div>
-                <div className="text-sm text-gray-700">Total Annual Savings</div>
+                <div className="text-sm text-white">Total Annual Savings</div>
               </div>
               
-              <div className="bg-blue-50 p-6 rounded-lg text-center border border-blue-200">
-                <div className="text-3xl font-bold text-blue-600 mb-2">
+              <div className="p-6 rounded-lg text-center border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="text-3xl font-bold text-white mb-2">
                   {Math.round(calculations.roiPercentage)}%
                 </div>
-                <div className="text-sm text-gray-700">ROI Percentage</div>
+                <div className="text-sm text-white">ROI Percentage</div>
               </div>
               
-              <div className="bg-purple-50 p-6 rounded-lg text-center border border-purple-200">
-                <div className="text-3xl font-bold text-purple-600 mb-2">
+              <div className="p-6 rounded-lg text-center border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="text-3xl font-bold text-white mb-2">
                   {calculations.paybackMonths}
                 </div>
-                <div className="text-sm text-gray-700">Months to Payback</div>
+                <div className="text-sm text-white">Months to Payback</div>
               </div>
             </div>
 
@@ -1044,7 +1083,7 @@ const ROICalculator = () => {
             {/* Call to Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
-                onClick={() => window.open('https://calendly.com/barn-gym/consultation', '_blank')}
+                onClick={() => window.open('https://api.leadconnectorhq.com/widget/booking/yjKOTwZq01wwoZvyp86s', '_blank')}
                 className="bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <Phone className="mr-2 w-4 h-4" />
@@ -1061,27 +1100,6 @@ const ROICalculator = () => {
             </div>
           </div>
 
-          {/* What's Next */}
-          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-            <h3 className="font-semibold text-gray-800 mb-4 text-center">What's Next?</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-center text-sm">
-              <div className="flex flex-col items-center">
-                <Mail className="w-8 h-8 text-blue-600 mb-2" />
-                <span className="font-medium">Check Your Email</span>
-                <span className="text-gray-600">Your detailed report is on its way</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <Phone className="w-8 h-8 text-barn-primary mb-2" />
-                <span className="font-medium">Book a Call</span>
-                <span className="text-gray-600">Discuss your specific needs</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <Star className="w-8 h-8 text-purple-600 mb-2" />
-                <span className="font-medium">Start Your Trial</span>
-                <span className="text-gray-600">Experience the benefits firsthand</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     );
