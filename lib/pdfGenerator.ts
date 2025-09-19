@@ -51,9 +51,10 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
     
     console.log('🚀 Launching Puppeteer...');
     
-    // Launch Puppeteer with Vercel-compatible settings
+    // Launch Puppeteer with Railway-compatible settings
     browser = await puppeteer.launch({
-      headless: true,
+      headless: 'new',
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -61,13 +62,13 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
         '--disable-accelerated-2d-canvas',
         '--no-first-run',
         '--no-zygote',
-        '--single-process',
         '--disable-gpu',
         '--disable-extensions',
         '--disable-default-apps',
         '--disable-background-timer-throttling',
         '--disable-backgrounding-occluded-windows',
-        '--disable-renderer-backgrounding'
+        '--disable-renderer-backgrounding',
+        '--disable-features=VizDisplayCompositor'
       ]
     });
     
