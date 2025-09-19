@@ -78,8 +78,8 @@ export async function GET(
       leadScore: leadScore
     };
 
-    // Generate PDF directly using the same function
-    const { generateBrandedROIReport } = await import('../../generate-pdf/route');
+    // Generate PDF directly using the shared utility
+    const { generateBrandedROIReport } = await import('../../../../lib/pdfGenerator');
     
     console.log('📄 Generating branded PDF directly...');
     const pdfBuffer = await generateBrandedROIReport(leadData);
@@ -91,7 +91,7 @@ export async function GET(
     const filename = `${safeCompanyName}_ROI_Analysis.pdf`;
 
     // Return the PDF file
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(pdfBuffer as unknown as BodyInit, {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',

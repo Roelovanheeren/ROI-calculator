@@ -82,14 +82,14 @@ export class SlideGenerator {
     
     // Check if calculations exist and handle missing data gracefully
     const calculations = data.calculations || {};
-    const totalSavings = calculations.totalSavings || 0;
-    const projectedSavings = calculations.projectedSavings || {};
+    const totalSavings = (calculations as any).totalSavings || 0;
+    const projectedSavings = (calculations as any).projectedSavings || {};
     
     // Calculate savings breakdown percentages with fallbacks
-    const sickDaysSavings = projectedSavings.sickDaysReduction || (totalSavings * 0.25);
-    const productivitySavings = projectedSavings.productivityGain || (totalSavings * 0.30);
-    const healthcareSavings = projectedSavings.healthcareReduction || (totalSavings * 0.20);
-    const turnoverSavings = projectedSavings.turnoverReduction || (totalSavings * 0.25);
+    const sickDaysSavings = (projectedSavings as any).sickDaysReduction || (totalSavings * 0.25);
+    const productivitySavings = (projectedSavings as any).productivityGain || (totalSavings * 0.30);
+    const healthcareSavings = (projectedSavings as any).healthcareReduction || (totalSavings * 0.20);
+    const turnoverSavings = (projectedSavings as any).turnoverReduction || (totalSavings * 0.25);
     
     // Calculate percentages for pie chart - ensure they always add up to exactly 100%
     const rawSickDaysPercentage = (sickDaysSavings / totalSavings) * 100;
@@ -122,11 +122,11 @@ export class SlideGenerator {
       
       // Financial Metrics
       TOTAL_SAVINGS: this.formatCurrency(totalSavings),
-      ROI_PERCENTAGE: Math.round(calculations.roiPercentage || 0).toString(),
-      NET_SAVINGS: this.formatCurrency(calculations.netSavings || 0),
-      PAYBACK_MONTHS: (calculations.paybackMonths || 12).toString(),
-      ANNUAL_PROGRAM_COST: this.formatCurrency(calculations.annualProgramCost || 0),
-      AFTER_TAX_COST: this.formatCurrency(calculations.afterTaxProgramCost || 0),
+      ROI_PERCENTAGE: Math.round((calculations as any).roiPercentage || 0).toString(),
+      NET_SAVINGS: this.formatCurrency((calculations as any).netSavings || 0),
+      PAYBACK_MONTHS: ((calculations as any).paybackMonths || 12).toString(),
+      ANNUAL_PROGRAM_COST: this.formatCurrency((calculations as any).annualProgramCost || 0),
+      AFTER_TAX_COST: this.formatCurrency((calculations as any).afterTaxProgramCost || 0),
       
       // Savings Breakdown (amounts)
       SICK_DAYS_SAVINGS: this.formatCurrency(sickDaysSavings),

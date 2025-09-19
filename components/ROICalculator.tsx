@@ -44,6 +44,7 @@ interface Calculations {
   netSavings: number;
   roiPercentage: number;
   paybackMonths: number;
+  yearlyProductivityGain: number;
 }
 
 const ROICalculator = () => {
@@ -122,6 +123,9 @@ const ROICalculator = () => {
     // If not, calculate how many months of savings needed to cover monthly cost
     const paybackMonths = monthlySavings >= monthlyProgramCostAfterTax ? 1 : Math.ceil(monthlyProgramCostAfterTax / monthlySavings);
 
+    // Calculate yearly productivity gain (employees * salary * 0.10)
+    const yearlyProductivityGain = employees * salary * 0.10;
+
     const results: Calculations = {
       currentCosts,
       projectedSavings,
@@ -131,7 +135,8 @@ const ROICalculator = () => {
       totalSavings,
       netSavings,
       roiPercentage,
-      paybackMonths
+      paybackMonths,
+      yearlyProductivityGain
     };
 
     setCalculations(results);
@@ -306,7 +311,7 @@ const ROICalculator = () => {
   // Calculator Step
   if (step === 'calculator') {
     return (
-      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
+      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -341,24 +346,31 @@ const ROICalculator = () => {
               </div>
             </div>
             
-            {/* Sweet Spot Guidance */}
-            <div className="bg-barn-secondary border border-barn-accent rounded-barn p-barn-content mb-barn-section max-w-3xl mx-auto shadow-barn">
-              <h3 className="font-headline font-semibold text-barn-primary mb-3 flex items-center justify-center">
-                <Star className="w-6 h-6 mr-2" />
-                💡 Best Results For:
-              </h3>
-              <div className="grid md:grid-cols-3 gap-4 text-sm">
-                <div className="text-center bg-barn-accent p-3 rounded-barn">
-                  <div className="font-body font-semibold text-barn-tertiary">Mid-Senior Professionals</div>
-                  <div className="font-body text-barn-tertiary">Average salary £55k+</div>
-                </div>
-                <div className="text-center bg-barn-accent p-3 rounded-barn">
-                  <div className="font-body font-semibold text-barn-tertiary">Growth Companies</div>
-                  <div className="font-body text-barn-tertiary">20%+ annual turnover</div>
-                </div>
-                <div className="text-center bg-barn-accent p-3 rounded-barn">
-                  <div className="font-body font-semibold text-barn-tertiary">Established Teams</div>
-                  <div className="font-body text-barn-tertiary">100+ employees</div>
+            {/* Trust & Value Elements */}
+            <div className="max-w-4xl mx-auto mb-8">
+              {/* Social Proof */}
+              <div className="text-center mb-6">
+                <p className="text-sm text-gray-500">Trusted by 500+ UK companies</p>
+              </div>
+              
+              {/* Value Preview */}
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                <h3 className="font-semibold text-green-800 mb-4">
+                  Your personalized report will include:
+                </h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="flex flex-col items-center">
+                    <Calculator className="w-8 h-8 text-green-600 mb-2" />
+                    <span className="text-sm text-green-700">Cost breakdown</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <TrendingUp className="w-8 h-8 text-green-600 mb-2" />
+                    <span className="text-sm text-green-700">Implementation timeline</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <FileText className="w-8 h-8 text-green-600 mb-2" />
+                    <span className="text-sm text-green-700">Board presentation slides</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -501,7 +513,7 @@ const ROICalculator = () => {
   // Results Step (shows immediate value)
   if (step === 'results') {
     return (
-      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
+      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header with Results */}
           <div className="text-center mb-8">
@@ -520,11 +532,11 @@ const ROICalculator = () => {
             </p>
             
             {/* Top CTA for Detailed Report */}
-            <div className="bg-gradient-to-r from-barn-primary to-black rounded-2xl p-6 mb-8 text-white shadow-barn">
-              <h2 className="text-2xl font-headline font-bold mb-3">
+            <div className="bg-white rounded-2xl p-6 mb-8 border-2 border-barn-primary shadow-barn">
+              <h2 className="text-2xl font-headline font-bold mb-3 text-barn-primary">
                 📊 Want a Detailed Report for Your Board?
               </h2>
-              <p className="text-lg font-body mb-4 opacity-90">
+              <p className="text-lg font-body mb-4 text-gray-700">
                 Get a comprehensive business case with industry benchmarks, implementation roadmap, 
                 and presentation-ready slides sent directly to your inbox.
               </p>
@@ -533,12 +545,12 @@ const ROICalculator = () => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   setStep('gate');
                 }}
-                className="bg-barn-secondary text-barn-primary font-headline font-bold py-3 px-8 rounded-barn hover:bg-barn-accent transition-colors duration-200 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-barn-primary text-white font-headline font-bold py-3 px-8 rounded-barn hover:bg-green-700 transition-colors duration-200 inline-flex items-center text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <Mail className="mr-2" />
                 Get My Free Detailed Report
               </button>
-              <p className="text-sm font-body mt-3 opacity-80">
+              <p className="text-sm font-body mt-3 text-gray-600">
                 Transform these numbers into a presentation your CFO will approve
               </p>
             </div>
@@ -667,7 +679,7 @@ const ROICalculator = () => {
                 </div>
                 
                 {/* Total Impact */}
-                <div className="bg-barn-accent rounded-barn p-6 border-2 border-barn-primary shadow-barn">
+                <div className="bg-gray-50 rounded-barn p-6 border-2 border-barn-primary shadow-barn">
                   <div className="text-3xl font-headline font-bold mb-2 text-barn-primary">
                     {formatCurrency(calculations.totalSavings || 0)}
                   </div>
@@ -685,7 +697,7 @@ const ROICalculator = () => {
                     </div>
                     
                     {/* Tax Deduction Info */}
-                    <div className="bg-barn-accent border border-barn-primary rounded-barn p-3 mb-3">
+                    <div className="bg-gray-50 border border-barn-primary rounded-barn p-3 mb-3">
                       <div className="flex justify-between items-center text-xs mb-1">
                         <span className="font-body text-barn-primary">Less: Tax Relief (25% Corp Tax):</span>
                         <span className="font-body font-semibold text-barn-primary">+{formatCurrency((calculations.annualProgramCost || 0) * 0.25)}</span>
@@ -721,94 +733,25 @@ const ROICalculator = () => {
               Calculation Benchmarks
             </h4>
             <div className="grid md:grid-cols-4 gap-4 text-center">
-              <div className="bg-barn-accent p-4 rounded-barn">
-                <div className="text-2xl font-headline font-bold text-barn-primary">25%</div>
-                <div className="text-sm font-body text-barn-tertiary">Absenteeism Reduction</div>
+              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+                <div className="text-2xl font-headline font-bold text-white">25%</div>
+                <div className="text-sm font-body text-white">Absenteeism Reduction</div>
               </div>
-              <div className="bg-barn-accent p-4 rounded-barn">
-                <div className="text-2xl font-headline font-bold text-barn-primary">10%</div>
-                <div className="text-sm font-body text-barn-tertiary">Productivity Increase</div>
+              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+                <div className="text-2xl font-headline font-bold text-white">10%</div>
+                <div className="text-sm font-body text-white">Productivity Increase</div>
               </div>
-              <div className="bg-barn-accent p-4 rounded-barn">
-                <div className="text-2xl font-headline font-bold text-barn-primary">15%</div>
-                <div className="text-sm font-body text-barn-tertiary">Healthcare Cost Reduction</div>
+              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+                <div className="text-2xl font-headline font-bold text-white">15%</div>
+                <div className="text-sm font-body text-white">Healthcare Cost Reduction</div>
               </div>
-              <div className="bg-barn-accent p-4 rounded-barn">
-                <div className="text-2xl font-headline font-bold text-barn-primary">20%</div>
-                <div className="text-sm font-body text-barn-tertiary">Turnover Reduction</div>
+              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+                <div className="text-2xl font-headline font-bold text-white">20%</div>
+                <div className="text-sm font-body text-white">Turnover Reduction</div>
               </div>
             </div>
           </div>
 
-          {/* Gate to Detailed Report */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-green-100 text-center">
-            <FileText className="mx-auto w-16 h-16 text-barn-primary mb-4" />
-            <h2 className="text-3xl font-headline font-bold text-barn-primary mb-3">
-              Want a Detailed Report for Your Board?
-            </h2>
-            <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
-              These numbers look great, but you'll need more than basic calculations to present to your leadership team. 
-              Get a comprehensive analysis with industry benchmarks, implementation roadmap, and presentation-ready slides 
-              that will help you build a bulletproof business case.
-            </p>
-            
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
-              <h3 className="font-semibold text-yellow-800 mb-3">Your detailed report will include:</h3>
-              <div className="grid md:grid-cols-2 gap-4 text-left">
-                <div className="space-y-2">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Executive summary with key findings</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Detailed cost breakdown analysis</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Industry benchmark comparisons</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Peer company case studies</span>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Implementation timeline & roadmap</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Risk mitigation strategies</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Presentation-ready slides</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-barn-primary mr-2" />
-                    <span className="text-sm text-gray-700">Free trial offer details</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setStep('gate');
-              }}
-              className="bg-gradient-to-r from-barn-primary to-black hover:from-barn-green-600 hover:to-gray-900 text-barn-secondary font-headline font-bold py-4 px-8 rounded-barn transition-all duration-200 flex items-center justify-center text-lg mx-auto shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <Download className="mr-2" />
-              Get My Detailed Business Case Report (Free)
-            </button>
-            
-            <p className="text-sm text-gray-500 mt-4">
-              Transform these numbers into a presentation your CFO will approve
-            </p>
-          </div>
 
           {/* Disclaimer */}
           <div className="mt-6 bg-yellow-50 rounded-lg border border-yellow-200 p-4">
@@ -827,7 +770,7 @@ const ROICalculator = () => {
   // Email Gate Step
   if (step === 'gate') {
     return (
-      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
+      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Results Preview */}
           <div className="text-center mb-8">
@@ -840,23 +783,23 @@ const ROICalculator = () => {
               </div>
               <p className="text-xl text-gray-700 mb-4">Potential Annual Savings</p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <div className="text-2xl font-bold text-barn-primary">
+                <div className="bg-gradient-to-br from-barn-primary to-green-800 p-6 rounded-lg border-2 border-white">
+                  <div className="text-3xl font-bold text-white mb-2">
                     {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                   </div>
-                  <div className="text-sm text-gray-600">ROI</div>
+                  <div className="text-sm text-white">ROI</div>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                  <div className="text-2xl font-bold text-blue-600">
-                    {calculations.paybackMonths || 0}
+                <div className="bg-gradient-to-br from-barn-primary to-green-800 p-6 rounded-lg border-2 border-white">
+                  <div className="text-3xl font-bold text-white mb-2">
+                    {formatCurrency(calculations.yearlyProductivityGain || 0)}
                   </div>
-                  <div className="text-sm text-gray-600">Months to Payback</div>
+                  <div className="text-sm text-white">Yearly Productivity Gain</div>
                 </div>
-                <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                  <div className="text-2xl font-bold text-purple-600">
+                <div className="bg-gradient-to-br from-barn-primary to-green-800 p-6 rounded-lg border-2 border-white">
+                  <div className="text-3xl font-bold text-white mb-2">
                     {formatCurrency(calculations.netSavings || 0)}
                   </div>
-                  <div className="text-sm text-gray-600">Net Annual Benefit</div>
+                  <div className="text-sm text-white">Net Annual Benefit</div>
                 </div>
               </div>
             </div>
@@ -1033,7 +976,7 @@ const ROICalculator = () => {
     const leadScore = calculateLeadScore();
     
     return (
-      <div className="min-h-screen bg-barn-accent py-barn-section px-4">
+      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
