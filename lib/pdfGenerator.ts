@@ -1,5 +1,6 @@
 import { SlideGenerator } from './slideGenerator';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 
 interface LeadData {
   contactData: {
@@ -49,9 +50,15 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
     console.log(`✅ Generated ${slides.length} slide templates`);
     
     console.log('🚀 Launching Puppeteer...');
+    
+    // Configure for serverless environments (Vercel)
+    const isProduction = process.env.NODE_ENV === 'production';
+    
     browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+      args: isProduction ? chromium.args : ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+      defaultViewport: chromium.defaultViewport,
+      executablePath: isProduction ? await chromium.executablePath() : undefined,
+      headless: isProduction ? chromium.headless : true,
     });
     
     const page = await browser.newPage();
