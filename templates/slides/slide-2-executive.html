@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Executive Overview</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        max-height: 720px;
+        background-color: white;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        padding: 40px 60px 20px;
+    }
+    .main-title {
+        font-family: 'Red Rose', cursive;
+        font-weight: 700;
+        color: #007559;
+        font-size: 48px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .subtitle {
+        font-family: 'Red Rose', cursive;
+        font-weight: 700;
+        color: #333333;
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 16px;
+    }
+    .intro-text {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        color: #333333;
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 30px;
+        padding: 20px 80px 40px;
+        flex-grow: 1;
+        max-height: 450px;
+    }
+    .grid-item {
+        background-color: #E6F4F1;
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-height: 180px;
+    }
+    .item-icon {
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        margin-bottom: 10px;
+        background-color: #007559;
+    }
+    .grid-item .item-value {
+        font-family: 'Red Rose', cursive !important;
+        font-weight: 700 !important;
+        font-size: 36px !important;
+        color: #007559 !important;
+        margin-bottom: 2px !important;
+        text-shadow: none !important;
+    }
+    .grid-item .item-title {
+        font-family: 'Raleway', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 20px !important;
+        color: #007559 !important;
+        margin-bottom: 2px !important;
+        text-shadow: none !important;
+    }
+    .footer {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        color: #666666;
+        text-align: center;
+        padding: 0 60px 25px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="header">
+<div class="main-title">Executive Overview</div>
+<div class="subtitle">Key Performance Metrics for {{COMPANY_NAME}}</div>
+<div class="intro-text">Based on our analysis of {{EMPLOYEE_COUNT}} employees, your corporate wellness program delivers exceptional value:</div>
+</div>
+<div class="grid-container">
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-coins"></i>
+</div>
+<div class="item-value">£{{TOTAL_SAVINGS}}</div>
+<div class="item-title">Total Annual Savings</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-percentage"></i>
+</div>
+<div class="item-value">{{ROI_PERCENTAGE}}%</div>
+<div class="item-title">ROI Percentage</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-calculator"></i>
+</div>
+<div class="item-value">£{{NET_SAVINGS}}</div>
+<div class="item-title">Net Annual Benefit</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-calendar-alt"></i>
+</div>
+<div class="item-value">{{PAYBACK_MONTHS}} months</div>
+<div class="item-title">Payback Period</div>
+</div>
+</div>
+</div>
+</body>
+</html>

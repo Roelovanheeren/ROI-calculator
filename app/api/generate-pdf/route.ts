@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { jsPDF } from 'jspdf';
+import { SlideGenerator } from '../../../lib/slideGenerator';
+import puppeteer from 'puppeteer';
 
 interface LeadData {
   calculatorData: {
@@ -42,8 +44,10 @@ export async function POST(request: NextRequest) {
   try {
     const data: LeadData = await request.json();
     
-    const pdf = await generateROIReport(data);
-    const pdfBuffer = Buffer.from(pdf.output('arraybuffer'));
+    console.log('📄 Generating branded PDF slides...');
+    
+    // Generate branded PDF using your beautiful slide templates
+    const pdfBuffer = await generateBrandedROIReport(data);
     
     return NextResponse.json({ 
       success: true,
@@ -51,14 +55,132 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Error generating PDF:', error);
+    console.error('💥 PDF generation error:', error);
     return NextResponse.json(
-      { success: false, message: 'Error generating PDF' },
+      { success: false, message: 'Error generating PDF', error: error.message },
       { status: 500 }
     );
   }
 }
 
+// New branded PDF generation using your beautiful slide templates
+export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> {
+  let browser;
+  try {
+    console.log('🎨 Generating all slide templates...');
+    
+    // Generate all 7 branded slides
+    const slides = SlideGenerator.generateAllSlides(data);
+    
+    console.log(`✅ Generated ${slides.length} slide templates`);
+    
+    // Launch Puppeteer to convert HTML slides to PDF
+    console.log('🚀 Launching Puppeteer...');
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+    });
+    
+    const page = await browser.newPage();
+    
+    // Set page size to slide dimensions (1280x720 landscape)
+    await page.setViewport({ width: 1280, height: 720 });
+    
+    console.log('📄 Creating multi-page PDF...');
+    
+    // Create a single PDF with multiple pages instead of merging separate PDFs
+    let isFirstPage = true;
+    const pdfPages = [];
+    
+    // Generate all slides and combine into one HTML document for PDF
+    let combinedHTML = '';
+    
+    for (let i = 0; i < slides.length; i++) {
+      console.log(`Processing slide ${i + 1}/7...`);
+      
+      // Add page break styling for multi-page PDF
+      const slideHTML = slides[i].replace(
+        '<body>',
+        `<body style="margin: 0; padding: 0; ${i > 0 ? 'page-break-before: always;' : ''}">`
+      );
+      
+      combinedHTML += slideHTML.replace('<!DOCTYPE html>', '').replace('<html lang="en">', '').replace('</html>', '').replace('<head>', '').replace('</head>', '').replace('<body', '<div').replace('</body>', '</div>');
+    }
+    
+    // Wrap in proper HTML structure
+    const finalHTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8"/>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+      <title>ROI Report</title>
+      ${slides[0].match(/<head>([\s\S]*?)<\/head>/)?.[1] || ''}
+      <style>
+        @page { 
+          size: 1280px 720px;
+          margin: 0;
+        }
+        .slide-container {
+          page-break-after: always;
+          width: 1280px;
+          height: 720px;
+        }
+        .slide-container:last-child {
+          page-break-after: avoid;
+        }
+      </style>
+    </head>
+    <body>
+      ${combinedHTML}
+    </body>
+    </html>`;
+    
+    // Set the combined HTML
+    await page.setContent(finalHTML, { 
+      waitUntil: 'networkidle0',
+      timeout: 60000 
+    });
+    
+    // Generate single PDF with all slides
+    const pdfBuffer = await page.pdf({
+      width: '1280px',
+      height: '720px',
+      printBackground: true,
+      margin: { top: 0, right: 0, bottom: 0, left: 0 },
+      pageRanges: '1-7'
+    });
+    
+    await browser.close();
+    
+    console.log('✅ Branded PDF generated successfully with 7 slides');
+    return pdfBuffer;
+    
+  } catch (error) {
+    if (browser) {
+      await browser.close();
+    }
+    console.error('❌ Error generating branded PDF:', error);
+    throw error;
+  }
+}
+
+// Function to merge multiple PDF buffers into one
+async function mergePDFs(pdfBuffers: Buffer[]): Promise<Buffer> {
+  // For now, we'll return the first buffer
+  // In production, you'd use a library like pdf-lib to properly merge PDFs
+  // But for MVP, Puppeteer generates a single PDF anyway when we use multiple pages
+  
+  // Simple concatenation approach - each slide becomes a page
+  const doc = new jsPDF('landscape', 'px', [1280, 720]);
+  
+  // Add each slide as a page (this is a simplified approach)
+  // In production, you'd properly merge the PDF buffers
+  
+  return pdfBuffers[0]; // Return first for now - will implement proper merging if needed
+}
+
+// Legacy function (keeping for fallback)
 async function generateROIReport(data: LeadData): Promise<jsPDF> {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.width;
@@ -147,11 +269,32 @@ async function generateROIReport(data: LeadData): Promise<jsPDF> {
   doc.setFontSize(12);
   doc.setFont(undefined, 'normal');
   
+  // Calculate savings breakdown if not provided
+  const employees = parseInt(data.calculatorData.employees) || 0;
+  const salary = parseInt(data.calculatorData.salary) || 0;
+  const sickDays = parseFloat(data.calculatorData.sickDays) || 0;
+  const turnoverRate = parseFloat(data.calculatorData.turnoverRate) || 0;
+  const healthcareCost = parseInt(data.calculatorData.healthcareCost) || 0;
+  
+  const dailySalary = salary / 260;
+  
+  const currentCosts = {
+    sickDays: employees * sickDays * dailySalary,
+    turnover: employees * (turnoverRate / 100) * (salary * 0.75),
+    healthcare: employees * healthcareCost,
+    productivity: employees * salary * 0.15
+  };
+  
+  const sickDaysReduction = data.calculations.projectedSavings?.sickDaysReduction || (currentCosts.sickDays * 0.25);
+  const productivityGain = data.calculations.projectedSavings?.productivityGain || (currentCosts.productivity * 0.10);
+  const healthcareReduction = data.calculations.projectedSavings?.healthcareReduction || (currentCosts.healthcare * 0.15);
+  const turnoverReduction = data.calculations.projectedSavings?.turnoverReduction || (currentCosts.turnover * 0.20);
+  
   const savings = [
-    { label: 'Reduced Absenteeism', amount: data.calculations.projectedSavings.sickDaysReduction, color: [34, 197, 94] },
-    { label: 'Increased Productivity', amount: data.calculations.projectedSavings.productivityGain, color: [59, 130, 246] },
-    { label: 'Reduced Healthcare Costs', amount: data.calculations.projectedSavings.healthcareReduction, color: [147, 51, 234] },
-    { label: 'Reduced Turnover', amount: data.calculations.projectedSavings.turnoverReduction, color: [249, 115, 22] }
+    { label: 'Reduced Absenteeism', amount: sickDaysReduction, color: [34, 197, 94] },
+    { label: 'Increased Productivity', amount: productivityGain, color: [59, 130, 246] },
+    { label: 'Reduced Healthcare Costs', amount: healthcareReduction, color: [147, 51, 234] },
+    { label: 'Reduced Turnover', amount: turnoverReduction, color: [249, 115, 22] }
   ];
   
   savings.forEach((item, index) => {

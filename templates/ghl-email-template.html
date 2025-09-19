@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Corporate Wellness ROI Analysis</title>
+    <style>
+        body {
+            font-family: 'Raleway', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007559;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .greeting {
+            color: #007559;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+        }
+        
+        .intro-text {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .report-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid #007559;
+        }
+        
+        .cta-section {
+            background: #007559;
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #007559;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #E6F4F1;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .unsubscribe {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="https://res.cloudinary.com/dlsvq9des/image/upload/v1753153130/Barn_Gym_Logo_transparent_jxvivr.png" alt="Barn Gym" class="logo">
+            <h1 class="greeting">Your Corporate Wellness ROI Analysis is Ready!</h1>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-text">
+            <p>Hi {{contact.firstName}},</p>
+            
+            <p>Thank you for using our ROI Calculator! Based on the information you provided for <strong>{{contact.companyName}}</strong>, we've generated your personalized corporate wellness analysis.</p>
+            
+            <p>This comprehensive report shows exactly how implementing our corporate wellness program could benefit your organization financially.</p>
+        </div>
+
+        <!-- PDF Download Section -->
+        <div style="background: #E6F4F1; padding: 25px; border-radius: 8px; margin: 25px 0; border-left: 5px solid #007559;">
+            <h3 style="color: #007559; margin-top: 0;">📊 Your Personalized ROI Analysis</h3>
+            <p style="margin: 15px 0; color: #333;">We've prepared a professional 4-slide presentation that you can download and share with your leadership team to make the business case for corporate wellness.</p>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="{{ contact.roi_report_pdf_url }}" 
+                   style="background: #007559; color: white; padding: 15px 30px; 
+                          text-decoration: none; border-radius: 8px; display: inline-block;
+                          font-weight: 600; font-size: 16px;">
+                    📎 Download Your ROI Report (PDF)
+                </a>
+            </div>
+            
+            <p style="margin: 15px 0; font-size: 14px; color: #666;">
+                <strong>What's included:</strong><br>
+                • Executive Summary & Key Metrics<br>
+                • Financial Impact Breakdown<br>
+                • Implementation Roadmap<br>
+                • Next Steps & Contact Information
+            </p>
+        </div>
+
+        <!-- Report Container (HTML version for reference) -->
+        <div class="report-container" style="margin-top: 30px;">
+            <h3 style="color: #007559; margin-top: 0;">📈 Quick Summary:</h3>
+            
+            <!-- THIS IS WHERE THE GENERATED REPORT CONTENT GETS INSERTED -->
+            <!-- Using triple braces for HTML content (unescaped) -->
+            {{{custom.WvbSUCIDJck8uLSxPkx9}}}
+            
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h3 style="margin: 0 0 15px 0;">Ready to Transform Your Workplace?</h3>
+            <p style="margin: 0 0 15px 0;">Based on your analysis, you could see significant returns from our corporate wellness program.</p>
+            
+            <a href="https://calendar.barn-gym.com" class="cta-button">Schedule Your Free Consultation</a>
+            
+            <p style="margin: 15px 0 0 0; font-size: 14px; opacity: 0.9;">
+                Let's discuss how to implement this at {{contact.companyName}}
+            </p>
+        </div>
+
+        <!-- Additional Information -->
+        <div style="background: #E6F4F1; padding: 20px; border-radius: 8px; margin: 25px 0;">
+            <h4 style="color: #007559; margin: 0 0 10px 0;">What Happens Next?</h4>
+            <ul style="margin: 0; padding-left: 20px; color: #666;">
+                <li>Review your personalized report above</li>
+                <li>Share with your leadership team</li>
+                <li>Schedule a consultation to discuss implementation</li>
+                <li>Get a customized proposal for {{contact.companyName}}</li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer">
+            <p><strong>Questions? We're here to help!</strong></p>
+            <p>📧 Email: hello@barn-gym.com<br>
+            📞 Phone: +44 20 1234 5678<br>
+            🌐 Website: <a href="https://barn-gym.com" style="color: #007559;">www.barn-gym.com</a></p>
+            
+            <div class="unsubscribe">
+                <p>You received this email because you used our ROI Calculator.<br>
+                Don't want to receive emails like this? <a href="#" style="color: #999;">Unsubscribe here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

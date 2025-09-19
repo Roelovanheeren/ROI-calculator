@@ -71,6 +71,8 @@ const ROICalculator = () => {
 
   const [calculations, setCalculations] = useState<Calculations>({} as Calculations);
   const [isGeneratingReport, setIsGeneratingReport] = useState(false);
+  const [contactId, setContactId] = useState<string | null>(null);
+  const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
 
   // Calculate ROI metrics
   const calculateROI = (): Calculations => {
@@ -158,7 +160,9 @@ const ROICalculator = () => {
   // Handle contact form submission
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Contact form submitted:', contactData);
+    console.log('🔧 Contact form submitted with data:', contactData);
+    console.log('🔧 Calculator data:', calculatorData);
+    console.log('🔧 Calculations:', calculations);
     
     // Validate required fields
     if (!contactData.fullName || !contactData.workEmail || !contactData.companyName || !contactData.jobTitle) {
@@ -166,32 +170,49 @@ const ROICalculator = () => {
       return;
     }
     
+    console.log('🔧 Validation passed, submitting to API...');
     setIsGeneratingReport(true);
 
     try {
+      const payload = {
+        calculatorData,
+        contactData,
+        calculations,
+        leadScore: calculateLeadScore()
+      };
+      
+      console.log('🔧 Sending payload:', payload);
+      
       // Send data to API
       const response = await fetch('/api/submit-lead', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          calculatorData,
-          contactData,
-          calculations,
-          leadScore: calculateLeadScore()
-        }),
+        body: JSON.stringify(payload),
       });
 
+      console.log('🔧 API Response status:', response.status);
+      
       if (response.ok) {
-        console.log('Lead submitted successfully');
+        const result = await response.json();
+        console.log('🔧 API Response data:', result);
+        console.log('✅ Lead submitted successfully');
+        
+        // Capture contact ID for PDF download
+        if (result.ghlResponse?.contactId) {
+          setContactId(result.ghlResponse.contactId);
+          console.log('✅ Contact ID captured:', result.ghlResponse.contactId);
+        }
+        
         setStep('report');
       } else {
-        console.error('Error submitting lead');
+        const errorText = await response.text();
+        console.error('❌ API Error:', response.status, errorText);
         alert('There was an error submitting your information. Please try again.');
       }
     } catch (error) {
-      console.error('Error submitting lead:', error);
+      console.error('❌ Network/Request Error:', error);
       alert('There was an error submitting your information. Please try again.');
     } finally {
       setIsGeneratingReport(false);
@@ -199,6 +220,42 @@ const ROICalculator = () => {
   };
 
   // Lead scoring function
+  const downloadPDF = async () => {
+    if (!contactId) {
+      alert('Unable to download PDF. Please try submitting the form again.');
+      return;
+    }
+
+    setIsDownloadingPDF(true);
+    try {
+      console.log('📄 Downloading PDF for contact:', contactId);
+      
+      const response = await fetch(`/api/download-pdf/${contactId}`);
+      
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `${contactData.companyName}_ROI_Analysis.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        console.log('✅ PDF downloaded successfully');
+      } else {
+        throw new Error('Failed to download PDF');
+      }
+    } catch (error) {
+      console.error('❌ Error downloading PDF:', error);
+      alert('There was an error downloading the PDF. Please try again or check your email for the report.');
+    } finally {
+      setIsDownloadingPDF(false);
+    }
+  };
+
   const calculateLeadScore = (): number => {
     let score = 0;
     
@@ -1015,6 +1072,30 @@ const ROICalculator = () => {
                 </div>
                 <div className="text-sm text-gray-700">Months to Payback</div>
               </div>
+            </div>
+
+            {/* PDF Download Button */}
+            <div className="text-center mb-6">
+              <button 
+                onClick={downloadPDF}
+                disabled={isDownloadingPDF || !contactId}
+                className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary disabled:bg-gray-400 text-barn-secondary font-headline font-bold py-4 px-12 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none mx-auto text-lg"
+              >
+                {isDownloadingPDF ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                    Generating PDF...
+                  </>
+                ) : (
+                  <>
+                    <Download className="mr-3 w-5 h-5" />
+                    Download Professional Report (PDF)
+                  </>
+                )}
+              </button>
+              <p className="text-sm text-gray-600 mt-2">
+                Get your detailed 7-slide boardroom presentation
+              </p>
             </div>
 
             {/* Call to Actions */}

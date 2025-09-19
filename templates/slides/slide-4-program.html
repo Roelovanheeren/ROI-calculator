@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Program Inclusions</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        max-height: 720px;
+        background-color: white;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        padding: 40px 60px 20px;
+    }
+    .main-title {
+        font-family: 'Red Rose', cursive;
+        font-weight: 700;
+        color: #007559;
+        font-size: 48px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
+    .subtitle {
+        font-family: 'Red Rose', cursive;
+        font-weight: 700;
+        color: #333333;
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 16px;
+    }
+    .intro-text {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        color: #333333;
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 30px;
+        padding: 20px 80px 40px;
+        flex-grow: 1;
+        max-height: 450px;
+    }
+    .grid-item {
+        background-color: #E6F4F1;
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-height: 180px;
+    }
+    .item-icon {
+        background-color: #007559;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    .item-title {
+        font-family: 'Raleway', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 20px !important;
+        color: #007559 !important;
+        margin-bottom: 5px !important;
+    }
+    .item-description {
+        font-family: 'Raleway', sans-serif !important;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        color: #333333 !important;
+    }
+    .footer {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        color: #666666;
+        text-align: center;
+        padding: 0 60px 25px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="header">
+<div class="main-title">Barn Gym Corporate Wellness</div>
+<div class="subtitle">What You Get</div>
+<div class="intro-text">Our comprehensive wellness solution includes these key components:</div>
+</div>
+<div class="grid-container">
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-clipboard-list"></i>
+</div>
+<div class="item-title">Training Plans</div>
+<div class="item-description">Customized fitness programs tailored to employee fitness levels and goals</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-apple-alt"></i>
+</div>
+<div class="item-title">Nutrition Guidance</div>
+<div class="item-description">Evidence-based dietary advice and meal planning support</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="item-title">Accountability</div>
+<div class="item-description">Progress tracking and professional coaching to maintain momentum</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-users"></i>
+</div>
+<div class="item-title">Community &amp; Culture</div>
+<div class="item-description">Team challenges and social support to build lasting wellness habits</div>
+</div>
+</div>
+<div class="footer">
+    Plus in-app tools for tracking and recipes to support your team's wellness journey
+</div>
+</div>
+</body>
+</html>
