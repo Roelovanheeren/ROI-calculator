@@ -311,7 +311,7 @@ const ROICalculator = () => {
   // Calculator Step
   if (step === 'calculator') {
     return (
-      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
+      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -354,22 +354,22 @@ const ROICalculator = () => {
               </div>
               
               {/* Value Preview */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                <h3 className="font-semibold text-green-800 mb-4">
+              <div className="border-2 border-white rounded-lg p-6 text-center" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <h3 className="font-semibold text-white mb-4">
                   Your personalized report will include:
                 </h3>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="flex flex-col items-center">
-                    <Calculator className="w-8 h-8 text-green-600 mb-2" />
-                    <span className="text-sm text-green-700">Cost breakdown</span>
+                    <Calculator className="w-8 h-8 text-white mb-2" />
+                    <span className="text-sm text-white">Cost breakdown</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <TrendingUp className="w-8 h-8 text-green-600 mb-2" />
-                    <span className="text-sm text-green-700">Implementation timeline</span>
+                    <TrendingUp className="w-8 h-8 text-white mb-2" />
+                    <span className="text-sm text-white">Implementation timeline</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <FileText className="w-8 h-8 text-green-600 mb-2" />
-                    <span className="text-sm text-green-700">Board presentation slides</span>
+                    <FileText className="w-8 h-8 text-white mb-2" />
+                    <span className="text-sm text-white">Board presentation slides</span>
                   </div>
                 </div>
               </div>
@@ -513,7 +513,7 @@ const ROICalculator = () => {
   // Results Step (shows immediate value)
   if (step === 'results') {
     return (
-      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
+      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="max-w-6xl mx-auto">
           {/* Header with Results */}
           <div className="text-center mb-8">
@@ -733,19 +733,19 @@ const ROICalculator = () => {
               Calculation Benchmarks
             </h4>
             <div className="grid md:grid-cols-4 gap-4 text-center">
-              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+              <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-2xl font-headline font-bold text-white">25%</div>
                 <div className="text-sm font-body text-white">Absenteeism Reduction</div>
               </div>
-              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+              <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-2xl font-headline font-bold text-white">10%</div>
                 <div className="text-sm font-body text-white">Productivity Increase</div>
               </div>
-              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+              <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-2xl font-headline font-bold text-white">15%</div>
                 <div className="text-sm font-body text-white">Healthcare Cost Reduction</div>
               </div>
-              <div className="bg-gradient-to-br from-barn-primary to-green-800 p-4 rounded-barn border-2 border-white">
+              <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-2xl font-headline font-bold text-white">20%</div>
                 <div className="text-sm font-body text-white">Turnover Reduction</div>
               </div>
@@ -770,7 +770,7 @@ const ROICalculator = () => {
   // Email Gate Step
   if (step === 'gate') {
     return (
-      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
+      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="max-w-4xl mx-auto">
           {/* Results Preview */}
           <div className="text-center mb-8">
@@ -783,19 +783,19 @@ const ROICalculator = () => {
               </div>
               <p className="text-xl text-gray-700 mb-4">Potential Annual Savings</p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div className="bg-gradient-to-br from-barn-primary to-green-800 p-6 rounded-lg border-2 border-white">
+                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                   </div>
                   <div className="text-sm text-white">ROI</div>
                 </div>
-                <div className="bg-gradient-to-br from-barn-primary to-green-800 p-6 rounded-lg border-2 border-white">
+                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {formatCurrency(calculations.yearlyProductivityGain || 0)}
                   </div>
                   <div className="text-sm text-white">Yearly Productivity Gain</div>
                 </div>
-                <div className="bg-gradient-to-br from-barn-primary to-green-800 p-6 rounded-lg border-2 border-white">
+                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {formatCurrency(calculations.netSavings || 0)}
                   </div>
@@ -976,7 +976,7 @@ const ROICalculator = () => {
     const leadScore = calculateLeadScore();
     
     return (
-      <div className="min-h-screen bg-gray-50 py-barn-section px-4">
+      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
