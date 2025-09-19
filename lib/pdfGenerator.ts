@@ -1,6 +1,5 @@
 import { SlideGenerator } from './slideGenerator';
-import puppeteer from 'puppeteer-core';
-import chromium from '@sparticuz/chromium';
+import puppeteer from 'puppeteer';
 
 interface LeadData {
   contactData: {
@@ -51,14 +50,19 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
     
     console.log('🚀 Launching Puppeteer...');
     
-    // Configure for serverless environments (Vercel)
-    const isProduction = process.env.NODE_ENV === 'production';
-    
+    // Launch Puppeteer browser with compatible settings
     browser = await puppeteer.launch({
-      args: isProduction ? chromium.args : ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-      defaultViewport: chromium.defaultViewport,
-      executablePath: isProduction ? await chromium.executablePath() : undefined,
-      headless: isProduction ? chromium.headless : true,
+      headless: 'new',
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--no-first-run',
+        '--no-zygote',
+        '--single-process',
+        '--disable-gpu'
+      ]
     });
     
     const page = await browser.newPage();
@@ -122,8 +126,7 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
       width: '1280px',
       height: '720px',
       printBackground: true,
-      margin: { top: 0, right: 0, bottom: 0, left: 0 },
-      pageRanges: '1-7'
+      margin: { top: 0, right: 0, bottom: 0, left: 0 }
     });
     
     await browser.close();
