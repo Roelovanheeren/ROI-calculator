@@ -815,19 +815,19 @@ const ROICalculator = () => {
               </div>
               <p className="text-xl text-gray-700 mb-4">Potential Annual Savings</p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div className="p-6 rounded-lg border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                   </div>
                   <div className="text-sm text-white">ROI</div>
                 </div>
-                <div className="p-6 rounded-lg border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
                   </div>
                   <div className="text-sm text-white">Yearly Productivity Gain</div>
                 </div>
-                <div className="p-6 rounded-lg border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                   <div className="text-3xl font-bold text-white mb-2">
                     {formatCurrency(calculations.netSavings || 0)}
                   </div>
@@ -1034,21 +1034,21 @@ const ROICalculator = () => {
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="p-6 rounded-lg text-center border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+              <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
                   {formatCurrency(calculations.totalSavings)}
                 </div>
                 <div className="text-sm text-white">Total Annual Savings</div>
               </div>
               
-              <div className="p-6 rounded-lg text-center border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+              <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
                   {Math.round(calculations.roiPercentage)}%
                 </div>
                 <div className="text-sm text-white">ROI Percentage</div>
               </div>
               
-              <div className="p-6 rounded-lg text-center border-2 border-barn-primary" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+              <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
                   {calculations.paybackMonths}
                 </div>
@@ -1084,17 +1084,19 @@ const ROICalculator = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={() => window.open('https://api.leadconnectorhq.com/widget/booking/yjKOTwZq01wwoZvyp86s', '_blank')}
-                className="bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="text-white font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 border-2 border-white"
+                style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}
               >
-                <Phone className="mr-2 w-4 h-4" />
+                <Phone className="mr-2 w-4 h-4 text-white" />
                 Book Free Consultation
               </button>
               
               <button 
                 onClick={() => window.open('mailto:guy@barn-gym.com?subject=Free Trial Request - ' + contactData.companyName, '_blank')}
-                className="bg-barn-primary hover:bg-barn-green-600 text-barn-secondary font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="text-white font-headline font-bold py-3 px-8 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 border-2 border-white"
+                style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}
               >
-                <Mail className="mr-2 w-4 h-4" />
+                <Mail className="mr-2 w-4 h-4 text-white" />
                 Start Free Trial
               </button>
             </div>
