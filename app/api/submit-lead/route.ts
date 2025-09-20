@@ -76,8 +76,16 @@ async function submitToGHL(data: LeadData) {
   const ghlApiKey = process.env.GHL_API_KEY;
   const locationId = process.env.GHL_LOCATION_ID;
   
+  console.log('🔧 Environment check:', {
+    hasApiKey: !!ghlApiKey,
+    apiKeyLength: ghlApiKey?.length || 0,
+    hasLocationId: !!locationId,
+    locationIdLength: locationId?.length || 0,
+    nodeEnv: process.env.NODE_ENV
+  });
+  
   if (!ghlApiKey || !locationId) {
-    console.log('GHL API key or location ID not configured - skipping CRM submission');
+    console.log('❌ GHL API key or location ID not configured - skipping CRM submission');
     return { success: false, message: 'GHL API key or location ID not configured' };
   }
 
