@@ -1,6 +1,6 @@
 import ROICalculator from '../components/ROICalculator'
 
-// Force Railway deployment update for environment variables
+// Force Railway redeploy to pick up GHL_API_KEY environment variable
 export default function Home() {
   return (
     <main>
