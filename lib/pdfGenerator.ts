@@ -123,6 +123,10 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
           border: none !important;
           box-shadow: none !important;
           outline: none !important;
+          -webkit-user-select: none !important;
+          -moz-user-select: none !important;
+          -ms-user-select: none !important;
+          user-select: none !important;
         }
         
         /* Only allow intentional backgrounds and styling */
