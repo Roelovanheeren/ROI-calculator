@@ -6,25 +6,51 @@ export async function GET(
 ) {
   try {
     const contactId = params.contactId;
-    const apiKey = process.env.GHL_API_KEY;
+    const apiKey = process.env.GHL_API_KEY || process.env.GHLKEY || process.env.GHL_KEY;
 
-    if (!apiKey || !contactId) {
-      return new NextResponse('Missing parameters', { status: 400 });
+    if (!contactId) {
+      return new NextResponse('Missing contactId', { status: 400 });
     }
 
-    // Get the contact to retrieve the PDF data
-    const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}`, {
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Version': '2021-07-28',
-      },
-    });
+    let contactData: any;
 
-    if (!response.ok) {
-      return new NextResponse('Contact not found', { status: 404 });
+    // Check if this is a fallback contactId (starts with "fallback_")
+    if (contactId.startsWith('fallback_')) {
+      console.log('🔄 Detected fallback contactId, using sample data for PDF generation');
+      
+      // For fallback contactIds, create a mock contact structure
+      contactData = {
+        contact: {
+          id: contactId,
+          firstName: 'Demo',
+          lastName: 'User',
+          email: 'demo@example.com',
+          companyName: 'Demo Company',
+          customFields: [] // Empty array since we'll use defaults
+        }
+      };
+      
+      console.log('✅ Using fallback contact data for PDF generation');
+    } else {
+      // Use GHL API for real contactIds
+      if (!apiKey) {
+        return new NextResponse('Missing API key for GHL contact', { status: 400 });
+      }
+
+      // Get the contact to retrieve the PDF data
+      const response = await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}`, {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Version': '2021-07-28',
+        },
+      });
+
+      if (!response.ok) {
+        return new NextResponse('Contact not found', { status: 404 });
+      }
+
+      contactData = await response.json();
     }
-
-    const contactData = await response.json();
     
     // Regenerate PDF from contact data instead of storing it
     console.log('Regenerating PDF for contact:', contactId);

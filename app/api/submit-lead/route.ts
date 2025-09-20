@@ -48,6 +48,16 @@ export async function POST(request: NextRequest) {
     // TODO: Add GoHighLevel CRM integration
     const ghlResponse = await submitToGHL(data);
     
+    // Generate contactId for PDF download
+    let contactId = null;
+    if (ghlResponse.success) {
+      contactId = ghlResponse.contactId;
+    } else {
+      // Create fallback contactId for PDF download when GHL fails
+      contactId = `fallback_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      console.log('🆔 Created fallback contactId for PDF download:', contactId);
+    }
+    
     // Generate and send PDF report as email attachment
     const reportResponse = await generateAndSendPDFReport(data);
     
@@ -57,6 +67,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ 
       success: true, 
       message: 'Lead submitted successfully',
+      contactId, // Add contactId to response
       ghlResponse,
       reportResponse,
       emailSequenceResponse
