@@ -117,6 +117,55 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
         .slide-container:last-child {
           page-break-after: avoid;
         }
+        
+        /* CRITICAL PDF BORDER CLEANUP */
+        * {
+          border: none !important;
+          box-shadow: none !important;
+          outline: none !important;
+        }
+        
+        /* Only allow intentional backgrounds and styling */
+        .slide-container {
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+        }
+        
+        /* Remove unwanted borders from all PDF elements */
+        .pdf-element,
+        .pdf-section,
+        .pdf-box,
+        .pdf-content,
+        .executive-summary,
+        .metric-display,
+        .savings-breakdown,
+        .implementation-section,
+        .grid-item,
+        .metric-item,
+        .chart-container,
+        .legend-container,
+        .investment-box,
+        .tools-container,
+        .step-item,
+        .cta-container,
+        .source-category,
+        div[class*="bg-"],
+        div[class*="border"],
+        .rounded,
+        .rounded-lg,
+        .rounded-xl,
+        .rounded-2xl {
+          border: none !important;
+          box-shadow: none !important;
+          outline: none !important;
+        }
+        
+        /* Preserve only intentional slide backgrounds */
+        .slide-container[style*="background-color"] {
+          border: none !important;
+          box-shadow: none !important;
+        }
       </style>
     </head>
     <body>

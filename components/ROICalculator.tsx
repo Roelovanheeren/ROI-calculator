@@ -476,7 +476,7 @@ const ROICalculator = () => {
                     step="0.1"
                     value={calculatorData.sickDays}
                     onChange={(e) => setCalculatorData({...calculatorData, sickDays: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="e.g., 7.8 (UK average)"
                   />
                 </div>
@@ -495,7 +495,7 @@ const ROICalculator = () => {
                     step="0.1"
                     value={calculatorData.turnoverRate}
                     onChange={(e) => setCalculatorData({...calculatorData, turnoverRate: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="e.g., 20 (sweet spot: 20%+)"
                   />
                 </div>
@@ -511,7 +511,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.healthcareCost}
                     onChange={(e) => setCalculatorData({...calculatorData, healthcareCost: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="e.g., 2500"
                   />
                 </div>
@@ -527,7 +527,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.currentWellnessCost}
                     onChange={(e) => setCalculatorData({...calculatorData, currentWellnessCost: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="e.g., 5000 (enter 0 if none)"
                   />
                 </div>
@@ -824,32 +824,72 @@ const ROICalculator = () => {
         <div className="max-w-4xl mx-auto">
           {/* Results Preview */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 gradient-text leading-tight">
               Your Initial Results Are Ready!
             </h1>
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-              <div className="text-6xl font-bold text-barn-primary mb-2">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-8">
+              <div className="text-3xl sm:text-4xl lg:text-6xl font-bold text-barn-primary mb-2 leading-none">
                 {formatCurrency(calculations.totalSavings || 0)}
               </div>
-              <p className="text-xl text-gray-700 mb-4">Potential Annual Savings</p>
-              <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                  <div className="text-3xl font-bold text-white mb-2">
+              <p className="text-lg sm:text-xl text-gray-700 mb-6">Potential Annual Savings</p>
+              
+              {/* CRITICAL: Above-the-fold CTAs */}
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-4 sm:p-6 mb-6 text-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+                  <button
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      setStep('gate');
+                    }}
+                    className="w-full sm:flex-1 bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base sm:text-lg"
+                  >
+                    <Mail className="mr-2 w-5 h-5" />
+                    📊 Get Detailed Board Report
+                  </button>
+                  
+                  {contactId && (
+                    <button 
+                      onClick={downloadPDF}
+                      disabled={isDownloadingPDF}
+                      className="w-full sm:flex-1 bg-white text-barn-primary border-2 border-barn-primary hover:bg-barn-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none text-base sm:text-lg"
+                    >
+                      {isDownloadingPDF ? (
+                        <>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
+                          Generating...
+                        </>
+                      ) : (
+                        <>
+                          <Download className="mr-2 w-5 h-5" />
+                          📄 Download PDF Now
+                        </>
+                      )}
+                    </button>
+                  )}
+                </div>
+                <p className="text-sm text-gray-600 mt-3 font-medium">
+                  {contactId ? 'Professional reports ready for immediate download' : 'Submit your details below to unlock detailed reports'}
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-center">
+                <div className="p-4 sm:p-6 rounded-lg border-2 border-white min-h-[120px] flex flex-col justify-center" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                  <div className="text-2xl sm:text-3xl font-bold text-white mb-2 leading-tight">
                     {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
                   </div>
-                  <div className="text-sm text-white">ROI</div>
+                  <div className="text-xs sm:text-sm text-white font-medium">ROI</div>
                 </div>
-                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                  <div className="text-3xl font-bold text-white mb-2">
+                <div className="p-4 sm:p-6 rounded-lg border-2 border-white min-h-[120px] flex flex-col justify-center" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 leading-tight">
                     {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
                   </div>
-                  <div className="text-sm text-white">Yearly Productivity Gain</div>
+                  <div className="text-xs sm:text-sm text-white font-medium">Yearly Productivity Gain</div>
                 </div>
-                <div className="p-6 rounded-lg border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                  <div className="text-3xl font-bold text-white mb-2">
+                <div className="p-4 sm:p-6 rounded-lg border-2 border-white min-h-[120px] flex flex-col justify-center sm:col-span-2 lg:col-span-1" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 leading-tight">
                     {formatCurrency(calculations.netSavings || 0)}
                   </div>
-                  <div className="text-sm text-white">Net Annual Benefit</div>
+                  <div className="text-xs sm:text-sm text-white font-medium">Net Annual Benefit</div>
                 </div>
               </div>
             </div>
@@ -879,7 +919,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.fullName}
                     onChange={(e) => setContactData({...contactData, fullName: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="John Smith"
                   />
                 </div>
@@ -893,7 +933,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.workEmail}
                     onChange={(e) => setContactData({...contactData, workEmail: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -907,7 +947,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.companyName}
                     onChange={(e) => setContactData({...contactData, companyName: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="Your Company Ltd"
                   />
                 </div>
@@ -921,7 +961,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.jobTitle}
                     onChange={(e) => setContactData({...contactData, jobTitle: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="HR Director"
                   />
                 </div>
@@ -933,7 +973,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.companySize}
                     onChange={(e) => setContactData({...contactData, companySize: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                   >
                     <option value="">Select size</option>
                     <option value="50-200">50-200 employees</option>
@@ -950,7 +990,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.timeline}
                     onChange={(e) => setContactData({...contactData, timeline: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                   >
                     <option value="">Select timeline</option>
                     <option value="Immediate">Immediate (within 1 month)</option>
@@ -967,7 +1007,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.currentInitiatives}
                     onChange={(e) => setContactData({...contactData, currentInitiatives: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                   >
                     <option value="">Select current initiatives</option>
                     <option value="None">None</option>
@@ -985,7 +1025,7 @@ const ROICalculator = () => {
                     type="text"
                     value={contactData.industry}
                     onChange={(e) => setContactData({...contactData, industry: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
                     placeholder="e.g., Technology, Finance, Healthcare"
                   />
                 </div>
