@@ -1,6 +1,6 @@
 import ROICalculator from '../components/ROICalculator'
 
-// Force deployment update for PDF fix
+// Force Railway deployment update for environment variables
 export default function Home() {
   return (
     <main>
