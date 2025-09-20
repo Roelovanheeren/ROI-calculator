@@ -16,21 +16,49 @@ export async function GET(
 
     // Check if this is a fallback contactId (starts with "fallback_")
     if (contactId.startsWith('fallback_')) {
-      console.log('🔄 Detected fallback contactId, using sample data for PDF generation');
+      console.log('🔄 Detected fallback contactId, extracting data from URL params');
       
-      // For fallback contactIds, create a mock contact structure
+      // Extract calculation data from URL parameters
+      const url = new URL(request.url);
+      const employees = url.searchParams.get('employees') || '100';
+      const salary = url.searchParams.get('salary') || '50000';
+      const sickDays = url.searchParams.get('sickDays') || '7';
+      const turnoverRate = url.searchParams.get('turnoverRate') || '15';
+      const healthcareCost = url.searchParams.get('healthcareCost') || '2000';
+      const companyName = url.searchParams.get('companyName') || 'Your Company';
+      const contactName = url.searchParams.get('contactName') || 'User';
+      const contactEmail = url.searchParams.get('contactEmail') || 'user@example.com';
+      
+      // Split contact name into first and last name
+      const nameParts = contactName.split(' ');
+      const firstName = nameParts[0] || 'User';
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      // Create contact structure with actual data from URL params
       contactData = {
         contact: {
           id: contactId,
-          firstName: 'Demo',
-          lastName: 'User',
-          email: 'demo@example.com',
-          companyName: 'Demo Company',
-          customFields: [] // Empty array since we'll use defaults
+          firstName: firstName,
+          lastName: lastName,
+          email: contactEmail,
+          companyName: companyName,
+          customFields: [
+            { id: 'eFOo2Vn1TcXqWWNsIscr', value: employees },
+            { id: 'fjRIicenfLUS4WhwKQkQ', value: salary },
+            { id: '3bAEsY1arNp20SHN0GK1', value: sickDays },
+            { id: 'lRJryvEdGykHyHSqhhme', value: turnoverRate },
+            { id: 'yX9OmYsGYcMpE6xX7A8Z', value: healthcareCost }
+          ]
         }
       };
       
-      console.log('✅ Using fallback contact data for PDF generation');
+      console.log('✅ Using fallback contact data with real calculation values:', {
+        companyName,
+        employees,
+        salary,
+        firstName,
+        lastName
+      });
     } else {
       // Use GHL API for real contactIds
       if (!apiKey) {

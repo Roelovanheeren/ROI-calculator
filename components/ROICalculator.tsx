@@ -266,7 +266,25 @@ const ROICalculator = () => {
     try {
       console.log('📄 Downloading PDF for contact:', contactId);
       
-      const response = await fetch(`/api/download-pdf/${contactId}`);
+      // For fallback contactIds, include calculation data in the request
+      let url = `/api/download-pdf/${contactId}`;
+      if (contactId.startsWith('fallback_')) {
+        // Encode the calculation data as URL parameters for fallback contacts
+        const params = new URLSearchParams({
+          employees: calculatorData.employees || '100',
+          salary: calculatorData.salary || '50000',
+          sickDays: calculatorData.sickDays || '7',
+          turnoverRate: calculatorData.turnoverRate || '15',
+          healthcareCost: calculatorData.healthcareCost || '2000',
+          companyName: contactData.companyName || 'Your Company',
+          contactName: contactData.fullName || 'User',
+          contactEmail: contactData.workEmail || 'user@example.com'
+        });
+        url += `?${params.toString()}`;
+        console.log('📄 Using fallback data with URL params');
+      }
+      
+      const response = await fetch(url);
       
       if (response.ok) {
         const blob = await response.blob();
