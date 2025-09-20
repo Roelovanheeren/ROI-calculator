@@ -833,50 +833,54 @@ const ROICalculator = () => {
               </div>
               <p className="text-lg sm:text-xl text-gray-700 mb-6">Potential Annual Savings</p>
               
-              {/* CRITICAL: Above-the-fold CTAs */}
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-4 sm:p-6 mb-6 text-center">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-                  <button
-                    onClick={() => {
-                      // Scroll to the form section
-                      const formElement = document.querySelector('#email-gate-form');
-                      if (formElement) {
-                        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      } else {
-                        // Fallback: scroll down to where the form typically is
-                        window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
-                      }
-                    }}
-                    className="w-full sm:flex-1 bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base sm:text-lg"
-                  >
-                    <Mail className="mr-2 w-5 h-5" />
-                    Get Detailed Board Report
-                  </button>
-                  
-                  {contactId && (
-                    <button 
-                      onClick={downloadPDF}
-                      disabled={isDownloadingPDF}
-                      className="w-full sm:flex-1 bg-white text-barn-primary border-2 border-barn-primary hover:bg-barn-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none text-base sm:text-lg"
-                    >
-                      {isDownloadingPDF ? (
-                        <>
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
-                          Generating...
-                        </>
-                      ) : (
-                        <>
-                          <Download className="mr-2 w-5 h-5" />
-                          Download PDF Now
-                        </>
-                      )}
-                    </button>
-                  )}
-                </div>
-                <p className="text-sm text-gray-600 mt-3 font-medium">
-                  {contactId ? 'Professional reports ready for immediate download' : 'Submit your details below to unlock detailed reports'}
+              {/* Main CTA Button */}
+              <div className="text-center mb-6">
+                <button
+                  onClick={() => {
+                    // Scroll to the form section
+                    const formElement = document.querySelector('#email-gate-form');
+                    if (formElement) {
+                      formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                      // Fallback: scroll down to where the form typically is
+                      window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg mx-auto"
+                >
+                  <Mail className="mr-3 w-5 h-5" />
+                  Get Detailed Board Report
+                </button>
+                <p className="text-sm text-gray-600 mt-3">
+                  Submit your details below to unlock detailed reports
                 </p>
               </div>
+              
+              {/* PDF Download Button - Above Metrics */}
+              {contactId && (
+                <div className="text-center mb-6">
+                  <button 
+                    onClick={downloadPDF}
+                    disabled={isDownloadingPDF}
+                    className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none text-lg mx-auto"
+                  >
+                    {isDownloadingPDF ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                        Generating PDF...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="mr-3 w-5 h-5" />
+                        Download Professional Report (PDF)
+                      </>
+                    )}
+                  </button>
+                  <p className="text-sm text-gray-600 mt-2">
+                    Get your detailed 7-slide boardroom presentation
+                  </p>
+                </div>
+              )}
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-center">
                 <div className="p-4 sm:p-6 rounded-lg border-2 border-white min-h-[120px] flex flex-col justify-center" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
