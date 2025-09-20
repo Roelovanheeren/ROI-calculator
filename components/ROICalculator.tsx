@@ -838,13 +838,19 @@ const ROICalculator = () => {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
                   <button
                     onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                      setStep('gate');
+                      // Scroll to the form section
+                      const formElement = document.querySelector('#email-gate-form');
+                      if (formElement) {
+                        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        // Fallback: scroll down to where the form typically is
+                        window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+                      }
                     }}
                     className="w-full sm:flex-1 bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base sm:text-lg"
                   >
                     <Mail className="mr-2 w-5 h-5" />
-                    📊 Get Detailed Board Report
+                    Get Detailed Board Report
                   </button>
                   
                   {contactId && (
@@ -861,7 +867,7 @@ const ROICalculator = () => {
                       ) : (
                         <>
                           <Download className="mr-2 w-5 h-5" />
-                          📄 Download PDF Now
+                          Download PDF Now
                         </>
                       )}
                     </button>
@@ -896,7 +902,7 @@ const ROICalculator = () => {
           </div>
 
           {/* Email Gate */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div id="email-gate-form" className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center mb-6">
               <FileText className="mx-auto w-16 h-16 text-barn-primary mb-4" />
               <h2 className="text-3xl font-headline font-bold text-barn-primary mb-3">
