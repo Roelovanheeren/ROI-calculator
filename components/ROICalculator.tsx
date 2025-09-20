@@ -650,7 +650,7 @@ const ROICalculator = () => {
           {/* Main Results Grid */}
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
             {/* Left Column: Company Information */}
-            <div className="bg-white rounded-2xl shadow-md p-6 border border-green-100">
+            <div className="bg-white rounded-2xl shadow-xl p-6">
               <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <Building className="w-6 h-6 mr-2" />
                 Your Company Information
@@ -685,7 +685,7 @@ const ROICalculator = () => {
             </div>
 
             {/* Right Column: Results */}
-            <div className="bg-white rounded-2xl shadow-md p-6 border border-green-100">
+            <div className="bg-white rounded-2xl shadow-xl p-6">
               <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <TrendingUp className="w-6 h-6 mr-2" />
                 Your Estimated Results
@@ -1124,29 +1124,6 @@ const ROICalculator = () => {
               </div>
             </div>
 
-            {/* PDF Download Button */}
-            <div className="text-center mb-6">
-              <button 
-                onClick={downloadPDF}
-                disabled={isDownloadingPDF || !contactId}
-                className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary disabled:bg-gray-400 text-barn-secondary font-headline font-bold py-4 px-12 rounded-barn transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:transform-none mx-auto text-lg"
-              >
-                {isDownloadingPDF ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                    Generating PDF...
-                  </>
-                ) : (
-                  <>
-                    <Download className="mr-3 w-5 h-5" />
-                    Download Professional Report (PDF)
-                  </>
-                )}
-              </button>
-              <p className="text-sm text-gray-600 mt-2">
-                Get your detailed 7-slide boardroom presentation
-              </p>
-            </div>
 
             {/* Call to Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
