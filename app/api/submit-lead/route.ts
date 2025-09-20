@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
 
 // GoHighLevel CRM Integration
 async function submitToGHL(data: LeadData) {
-  const ghlApiKey = process.env.GHL_API_KEY;
+  const ghlApiKey = process.env.GHL_API_KEY || process.env.GHLKEY || process.env.GHL_KEY;
   const locationId = process.env.GHL_LOCATION_ID;
   
   console.log('🔧 Environment check:', {
