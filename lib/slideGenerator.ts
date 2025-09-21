@@ -124,13 +124,13 @@ export class SlideGenerator {
       TOTAL_SAVINGS: this.formatCurrency(totalSavings),
       ROI_PERCENTAGE: Math.round((calculations as any).roiPercentage || 0).toString(),
       NET_SAVINGS: this.formatCurrency((calculations as any).netSavings || 0),
-      PAYBACK_MONTHS: ((calculations as any).paybackMonths || 12).toString(),
       ANNUAL_PROGRAM_COST: this.formatCurrency((calculations as any).annualProgramCost || 0),
       AFTER_TAX_COST: this.formatCurrency((calculations as any).afterTaxProgramCost || 0),
       
       // Savings Breakdown (amounts)
       SICK_DAYS_SAVINGS: this.formatCurrency(sickDaysSavings),
       PRODUCTIVITY_SAVINGS: this.formatCurrency(productivitySavings),
+      PRODUCTIVITY_GAIN: this.formatCurrency((projectedSavings as any).productivityGain || 0),
       HEALTHCARE_SAVINGS: this.formatCurrency(healthcareSavings),
       TURNOVER_SAVINGS: this.formatCurrency(turnoverSavings),
       
