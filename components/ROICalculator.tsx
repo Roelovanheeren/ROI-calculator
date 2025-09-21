@@ -1106,21 +1106,21 @@ const ROICalculator = () => {
                 <div className="text-3xl font-bold text-white mb-2">
                   {formatCurrency(calculations.totalSavings)}
                 </div>
-                <div className="text-sm text-white">Total Annual Savings</div>
+                <div className="text-sm text-white">Total Cost Saved</div>
               </div>
               
               <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
                   {Math.round(calculations.roiPercentage)}%
                 </div>
-                <div className="text-sm text-white">ROI Percentage</div>
+                <div className="text-sm text-white">ROI</div>
               </div>
               
               <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
-                  {calculations.paybackMonths}
+                  {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
                 </div>
-                <div className="text-sm text-white">Months to Payback</div>
+                <div className="text-sm text-white">Productivity Increase Value</div>
               </div>
             </div>
 
