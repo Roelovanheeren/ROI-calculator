@@ -1124,6 +1124,31 @@ const ROICalculator = () => {
               </div>
             </div>
 
+            {/* PDF Download Button */}
+            {contactId && (
+              <div className="text-center mb-6">
+                <button 
+                  onClick={downloadPDF}
+                  disabled={isDownloadingPDF}
+                  className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none text-lg mx-auto"
+                >
+                  {isDownloadingPDF ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                      Generating PDF...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="mr-3 w-5 h-5" />
+                      Download Professional Report (PDF)
+                    </>
+                  )}
+                </button>
+                <p className="text-sm text-gray-600 mt-2">
+                  Get your detailed 7-slide boardroom presentation
+                </p>
+              </div>
+            )}
 
             {/* Call to Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
