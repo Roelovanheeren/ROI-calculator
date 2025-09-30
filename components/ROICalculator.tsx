@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Mail, Phone, Building, Users, Calculator, TrendingUp, FileText, CheckCircle, AlertCircle, Star, Shield, Clock, Award, BarChart3 } from 'lucide-react';
 
 interface CalculatorData {
@@ -75,6 +75,13 @@ const ROICalculator = () => {
   const [isDownloadingPDF, setIsDownloadingPDF] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [generationStage, setGenerationStage] = useState('');
+
+  // Scroll to top when report step loads
+  useEffect(() => {
+    if (step === 'report') {
+      window.scrollTo(0, 0);
+    }
+  }, [step]);
 
   // Calculate ROI metrics
   const calculateROI = (): Calculations => {
@@ -1103,11 +1110,6 @@ const ROICalculator = () => {
   // Report/Success Step
   if (step === 'report') {
     const leadScore = calculateLeadScore();
-    
-    // Scroll to top when report step loads
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
     
     return (
       <div className="min-h-screen md:py-barn-section md:px-4 md:bg-white">
