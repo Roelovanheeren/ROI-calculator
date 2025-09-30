@@ -101,7 +101,7 @@ const ROICalculator = () => {
       sickDaysReduction: currentCosts.sickDays * 0.25, // 25% reduction (Gubler et al. 2018)
       turnoverReduction: currentCosts.turnover * 0.15, // 15% reduction (Gubler et al. 2018)
       healthcareReduction: currentCosts.healthcare * 0.10, // 10% reduction (Gubler et al. 2018)
-      productivityGain: employees * salary * 0.06 // 6% productivity improvement (Gubler et al. 2018)
+      productivityGain: employees * salary * 0.10 // 10% productivity improvement (Gubler et al. 2018)
     };
 
     // Barn Gym Corporate Wellness Investment (£175 per employee per month)
@@ -120,8 +120,8 @@ const ROICalculator = () => {
     const monthlySavings = totalSavings / 12;
     
 
-    // Calculate yearly productivity gain (employees * salary * 0.06)
-    const yearlyProductivityGain = employees * salary * 0.06;
+    // Calculate yearly productivity gain (employees * salary * 0.10)
+    const yearlyProductivityGain = employees * salary * 0.10;
 
     const results: Calculations = {
       currentCosts,
@@ -803,7 +803,7 @@ const ROICalculator = () => {
                 <div className="text-sm font-body text-white">Absenteeism Reduction</div>
               </div>
               <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                <div className="text-2xl font-headline font-bold text-white">6%</div>
+                <div className="text-2xl font-headline font-bold text-white">10%</div>
                 <div className="text-sm font-body text-white">Productivity Increase</div>
               </div>
               <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>

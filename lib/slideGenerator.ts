@@ -85,7 +85,7 @@ export class SlideGenerator {
     
     // Calculate savings breakdown percentages with fallbacks
     const sickDaysSavings = (projectedSavings as any).sickDaysReduction || (totalSavings * 0.25);
-    const productivitySavings = (projectedSavings as any).productivityGain || (totalSavings * 0.06);
+    const productivitySavings = (projectedSavings as any).productivityGain || (totalSavings * 0.10);
     const healthcareSavings = (projectedSavings as any).healthcareReduction || (totalSavings * 0.10);
     const turnoverSavings = (projectedSavings as any).turnoverReduction || (totalSavings * 0.15);
     
@@ -97,7 +97,7 @@ export class SlideGenerator {
     const turnoverPercentage = Math.round((turnoverSavings / totalSavingsOnly) * 100);
     
     // Productivity is separate value creation, not included in savings breakdown
-    const productivityPercentage = 6; // 6% productivity gain (shown separately)
+    const productivityPercentage = 10; // 10% productivity gain (shown separately)
     
     return {
       // Company Info
