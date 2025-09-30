@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Download, Mail, Phone, Building, Users, Calculator, TrendingUp, FileText, CheckCircle, AlertCircle, Star, Shield, Clock, Award } from 'lucide-react';
+import { Download, Mail, Phone, Building, Users, Calculator, TrendingUp, FileText, CheckCircle, AlertCircle, Star, Shield, Clock, Award, BarChart3 } from 'lucide-react';
 
 interface CalculatorData {
   employees: string;
@@ -647,47 +647,13 @@ const ROICalculator = () => {
           )}
 
           {/* Main Results Grid */}
+          {/* Top Row: Total Results and Breakdown */}
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
-            {/* Left Column: Company Information */}
-            <div className="bg-white rounded-2xl shadow-xl p-6" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-              <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
-                <Building className="w-6 h-6 mr-2" />
-                Your Company Information
-              </h2>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Number of Employees:</span>
-                  <span className="font-semibold">{calculatorData.employees}</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Average Annual Salary:</span>
-                  <span className="font-semibold">{formatCurrency(parseFloat(calculatorData.salary))}</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Annual Sick Days per Employee:</span>
-                  <span className="font-semibold">{calculatorData.sickDays}</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Current Turnover Rate:</span>
-                  <span className="font-semibold">{calculatorData.turnoverRate}%</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="text-gray-600">Healthcare Cost per Employee:</span>
-                  <span className="font-semibold">{formatCurrency(parseFloat(calculatorData.healthcareCost) || 2000)}</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-gray-600">Current Wellness Spending:</span>
-                  <span className="font-semibold">{formatCurrency(parseFloat(calculatorData.currentWellnessCost) || 0)}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Results */}
+            {/* Left Column: Total Results */}
             <div className="bg-white rounded-2xl shadow-xl p-6" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
               <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <TrendingUp className="w-6 h-6 mr-2" />
-                Your Estimated Results
+                Total Results
               </h2>
               
               {/* Total Impact - Moved to top for prominence */}
@@ -735,6 +701,14 @@ const ROICalculator = () => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* Right Column: Breakdown */}
+            <div className="bg-white rounded-2xl shadow-xl p-6" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+              <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
+                <BarChart3 className="w-6 h-6 mr-2" />
+                Breakdown
+              </h2>
               
               <div className="space-y-4">
                 {/* Absenteeism Savings */}
@@ -771,6 +745,47 @@ const ROICalculator = () => {
                   </div>
                   <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Turnover</h3>
                   <p className="text-sm font-body text-barn-tertiary">20% reduction in employee turnover through improved workplace satisfaction</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Company Information Section - Full Width Below */}
+          <div className="bg-white rounded-2xl shadow-xl p-6 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+            <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
+              <Building className="w-6 h-6 mr-2" />
+              Your Company Information
+            </h2>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Number of Employees:</span>
+                  <span className="font-semibold">{calculatorData.employees}</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Average Annual Salary:</span>
+                  <span className="font-semibold">{formatCurrency(parseFloat(calculatorData.salary))}</span>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Annual Sick Days per Employee:</span>
+                  <span className="font-semibold">{calculatorData.sickDays}</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Current Turnover Rate:</span>
+                  <span className="font-semibold">{calculatorData.turnoverRate}%</span>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Healthcare Cost per Employee:</span>
+                  <span className="font-semibold">{formatCurrency(parseFloat(calculatorData.healthcareCost) || 2000)}</span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-gray-600">Current Wellness Spending:</span>
+                  <span className="font-semibold">{formatCurrency(parseFloat(calculatorData.currentWellnessCost) || 0)}</span>
                 </div>
               </div>
             </div>
