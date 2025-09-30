@@ -119,7 +119,6 @@ export async function GET(
         totalSavings: totalSavings,
         roiPercentage: roiPercentage,
         netSavings: totalSavings - (parseInt(employees) * 175 * 12 * 0.75),
-        paybackMonths: 6,
         annualProgramCost: parseInt(employees) * 175 * 12,
         afterTaxProgramCost: parseInt(employees) * 175 * 12 * 0.75,
         projectedSavings: {

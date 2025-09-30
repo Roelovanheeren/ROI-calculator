@@ -43,7 +43,6 @@ interface Calculations {
   totalSavings: number;
   netSavings: number;
   roiPercentage: number;
-  paybackMonths: number;
   yearlyProductivityGain: number;
 }
 
@@ -120,10 +119,6 @@ const ROICalculator = () => {
     const monthlyProgramCostAfterTax = (monthlyProgramCost * 0.75); // 25% tax relief
     const monthlySavings = totalSavings / 12;
     
-    // For monthly payment model: payback = when monthly savings > monthly cost
-    // If monthly savings exceed monthly costs, payback is 1 month (immediate positive cash flow)
-    // If not, calculate how many months of savings needed to cover monthly cost
-    const paybackMonths = monthlySavings >= monthlyProgramCostAfterTax ? 1 : Math.ceil(monthlyProgramCostAfterTax / monthlySavings);
 
     // Calculate yearly productivity gain (employees * salary * 0.06)
     const yearlyProductivityGain = employees * salary * 0.06;
@@ -137,7 +132,6 @@ const ROICalculator = () => {
       totalSavings,
       netSavings,
       roiPercentage,
-      paybackMonths,
       yearlyProductivityGain
     };
 

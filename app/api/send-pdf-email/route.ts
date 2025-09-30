@@ -13,7 +13,6 @@ interface PDFEmailData {
     totalSavings: number;
     roiPercentage: number;
     netSavings: number;
-    paybackMonths: number;
   };
 }
 
@@ -141,7 +140,6 @@ function generateEmailHTML(emailData: PDFEmailData): string {
                     <li>Potential Annual Savings: £${emailData.calculations.totalSavings.toLocaleString()}</li>
                     <li>Return on Investment: ${Math.round(emailData.calculations.roiPercentage)}%</li>
                     <li>Net Annual Benefit: £${emailData.calculations.netSavings.toLocaleString()}</li>
-                    <li>Payback Period: ${emailData.calculations.paybackMonths} months</li>
                 </ul>
                 
                 <p>Please find attached your professional 4-slide presentation that you can share with your leadership team.</p>

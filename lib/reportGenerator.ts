@@ -20,7 +20,6 @@ interface ReportData {
   totalSavings: number;
   netBenefit: number;
   roiPercentage: number;
-  paybackMonths: number;
   annualProgramCost: number;
   afterTaxProgramCost: number;
   leadScore: number;
@@ -87,7 +86,6 @@ export class ReportGenerator {
       ROI_PERCENTAGE: Math.round(data.roiPercentage).toString(),
       TOTAL_SAVINGS: this.formatCurrency(data.totalSavings),
       NET_BENEFIT: this.formatCurrency(data.netBenefit),
-      PAYBACK_MONTHS: data.paybackMonths.toString(),
       PROGRAM_COST: this.formatCurrency(data.annualProgramCost),
       GROSS_PROGRAM_COST: this.formatCurrency(data.annualProgramCost),
       NET_PROGRAM_COST: this.formatCurrency(data.afterTaxProgramCost),
@@ -131,7 +129,6 @@ export class ReportGenerator {
 • ROI: ${Math.round(data.roiPercentage)}%
 • Annual Savings: ${this.formatCurrency(data.totalSavings)}
 • Net Benefit: ${this.formatCurrency(data.netBenefit)}
-• Payback Period: ${data.paybackMonths} months
 
 📊 SAVINGS BREAKDOWN:
 • Reduced Absenteeism: ${this.formatCurrency(data.absenteeismSavings)}
@@ -212,7 +209,6 @@ Generated on ${new Date().toLocaleDateString('en-GB')} for ${data.contactName}
       totalSavings: calculations.totalSavings || 0,
       netBenefit: calculations.netSavings || 0,
       roiPercentage: calculations.roiPercentage || 0,
-      paybackMonths: calculations.paybackMonths || 0,
       annualProgramCost: calculations.annualProgramCost || 0,
       afterTaxProgramCost: calculations.afterTaxProgramCost || 0,
       leadScore: leadScore || 0,

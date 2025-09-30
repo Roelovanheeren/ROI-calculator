@@ -23,7 +23,6 @@ const sampleData = {
     totalSavings: 127500,
     roiPercentage: 162.75,
     netSavings: 85500,
-    paybackMonths: 8,
     annualProgramCost: 36000,
     afterTaxProgramCost: 27000,
     projectedSavings: {

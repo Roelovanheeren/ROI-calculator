@@ -15,7 +15,6 @@ interface SlideData {
   TOTAL_SAVINGS: string;
   ROI_PERCENTAGE: string;
   NET_SAVINGS: string;
-  PAYBACK_MONTHS: string;
   ANNUAL_PROGRAM_COST: string;
   AFTER_TAX_COST: string;
   
@@ -56,7 +55,6 @@ interface LeadData {
     totalSavings: number;
     roiPercentage: number;
     netSavings: number;
-    paybackMonths: number;
     annualProgramCost: number;
     afterTaxProgramCost: number;
     projectedSavings: {
