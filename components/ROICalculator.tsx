@@ -356,6 +356,8 @@ const ROICalculator = () => {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
+          {/* Main Content Container with Background Image */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -539,6 +541,7 @@ const ROICalculator = () => {
               </div>
             </form>
           </div>
+          </div> {/* Close main content container */}
 
           {/* Trust Indicators */}
           <div className="mt-8 text-center">
@@ -559,6 +562,8 @@ const ROICalculator = () => {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-6xl mx-auto">
+          {/* Main Content Container with Background Image */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
           {/* Header with Results */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -806,6 +811,7 @@ const ROICalculator = () => {
               Consult your accountant for specific tax implications.
             </p>
           </div>
+          </div> {/* Close main content container */}
         </div>
       </div>
     );
@@ -816,6 +822,8 @@ const ROICalculator = () => {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
+          {/* Main Content Container with Background Image */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
           {/* Results Preview */}
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 gradient-text leading-tight">
@@ -1070,6 +1078,7 @@ const ROICalculator = () => {
               We respect your privacy. Your information will only be used to send your report and relevant wellness insights.
             </p>
           </div>
+          </div> {/* Close main content container */}
         </div>
       </div>
     );
@@ -1082,6 +1091,8 @@ const ROICalculator = () => {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
+          {/* Main Content Container with Background Image */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
             <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
@@ -1165,6 +1176,7 @@ const ROICalculator = () => {
               </button>
             </div>
           </div>
+          </div> {/* Close main content container */}
 
         </div>
       </div>
