@@ -152,13 +152,52 @@
         z-index: 100;
         opacity: 1;
     }
+    .productivity-section {
+        background-color: #F0F9F7;
+        border: 2px solid #007559;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    .productivity-title {
+        font-family: 'Red Rose', cursive;
+        font-weight: 400;
+        color: #007559;
+        font-size: 24px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .productivity-item {
+        text-align: center;
+    }
+    .productivity-label {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 500;
+        color: #333333;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    .productivity-value {
+        font-family: 'Red Rose', cursive;
+        font-weight: 400;
+        color: #007559;
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+    .productivity-description {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        color: #666666;
+        font-size: 14px;
+        font-style: italic;
+    }
 </style>
 </head>
 <body>
 <div class="slide-container">
 <div class="header">
 <div class="main-title">Projected Cost Savings Breakdown</div>
-<div class="intro-text">Our corporate wellness program delivers savings across four critical business areas:</div>
+<div class="intro-text">Our corporate wellness program delivers cost savings across three critical business areas:</div>
 </div>
 <div class="content-container">
 <div class="chart-container">
@@ -171,10 +210,6 @@
 <div class="legend-text">Absenteeism: £{{SICK_DAYS_SAVINGS}} ({{SICK_DAYS_PERCENTAGE}}%)</div>
 </div>
 <div class="legend-item">
-<div class="color-box" style="background-color: #009B77;"></div>
-<div class="legend-text">Productivity: £{{PRODUCTIVITY_SAVINGS}} ({{PRODUCTIVITY_PERCENTAGE}}%)</div>
-</div>
-<div class="legend-item">
 <div class="color-box" style="background-color: #52BCA3;"></div>
 <div class="legend-text">Healthcare: £{{HEALTHCARE_SAVINGS}} ({{HEALTHCARE_PERCENTAGE}}%)</div>
 </div>
@@ -184,6 +219,17 @@
 </div>
 </div>
 </div>
+
+<!-- Productivity Value Creation Section -->
+<div class="productivity-section">
+<div class="productivity-title">Additional Value Creation</div>
+<div class="productivity-item">
+<div class="productivity-label">Productivity Increase</div>
+<div class="productivity-value">£{{PRODUCTIVITY_SAVINGS}} ({{PRODUCTIVITY_PERCENTAGE}}% gain)</div>
+<div class="productivity-description">Enhanced employee engagement and health drives additional value creation</div>
+</div>
+</div>
+
 <div class="sidebar">
 <div class="investment-box">
 <div class="investment-title">Investment Details</div>
@@ -217,12 +263,11 @@ const ctx = document.getElementById('costSavingsPieChart').getContext('2d');
 const costSavingsPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Absenteeism', 'Productivity', 'Healthcare', 'Turnover'],
+        labels: ['Absenteeism', 'Healthcare', 'Turnover'],
         datasets: [{
-            data: [{{SICK_DAYS_PERCENTAGE}}, {{PRODUCTIVITY_PERCENTAGE}}, {{HEALTHCARE_PERCENTAGE}}, {{TURNOVER_PERCENTAGE}}],
+            data: [{{SICK_DAYS_PERCENTAGE}}, {{HEALTHCARE_PERCENTAGE}}, {{TURNOVER_PERCENTAGE}}],
             backgroundColor: [
                 '#007559',
-                '#009B77',
                 '#52BCA3',
                 '#7FD1BB'
             ],

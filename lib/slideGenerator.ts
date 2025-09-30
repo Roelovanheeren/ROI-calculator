@@ -89,11 +89,15 @@ export class SlideGenerator {
     const healthcareSavings = (projectedSavings as any).healthcareReduction || (totalSavings * 0.10);
     const turnoverSavings = (projectedSavings as any).turnoverReduction || (totalSavings * 0.15);
     
-    // Use research-based percentages for pie chart
-    const sickDaysPercentage = 25; // 25% reduction in sick days
-    const productivityPercentage = 6; // 6% productivity gain
-    const healthcarePercentage = 10; // 10% healthcare reduction
-    const turnoverPercentage = 15; // 15% turnover reduction
+    // Calculate savings breakdown percentages (cost reductions only)
+    // Remove productivity from savings - it's value creation, not cost reduction
+    const totalSavingsOnly = sickDaysSavings + healthcareSavings + turnoverSavings;
+    const sickDaysPercentage = Math.round((sickDaysSavings / totalSavingsOnly) * 100);
+    const healthcarePercentage = Math.round((healthcareSavings / totalSavingsOnly) * 100);
+    const turnoverPercentage = Math.round((turnoverSavings / totalSavingsOnly) * 100);
+    
+    // Productivity is separate value creation, not included in savings breakdown
+    const productivityPercentage = 6; // 6% productivity gain (shown separately)
     
     return {
       // Company Info
