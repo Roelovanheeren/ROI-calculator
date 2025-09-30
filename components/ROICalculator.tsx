@@ -690,6 +690,52 @@ const ROICalculator = () => {
                 Your Estimated Results
               </h2>
               
+              {/* Total Impact - Moved to top for prominence */}
+              <div className="bg-gray-50 rounded-barn p-6 border-2 border-barn-primary shadow-barn mb-6">
+                <div className="text-3xl font-headline font-bold mb-2 text-barn-primary">
+                  {formatCurrency(calculations.totalSavings || 0)}
+                </div>
+                <h3 className="font-body font-semibold text-barn-tertiary mb-1">Total Estimated Annual Financial Impact</h3>
+                <p className="text-sm font-body text-barn-tertiary mb-3">Combined financial benefit from your comprehensive wellness program</p>
+                
+                {/* Program Cost Breakdown */}
+                <div className="bg-barn-secondary rounded-barn p-4 mb-3 text-sm shadow-inner">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-body text-barn-tertiary">Barn Gym Corporate Wellness Investment:</span>
+                    <span className="font-body font-semibold text-barn-tertiary">-{formatCurrency(calculations.annualProgramCost || 0)}</span>
+                  </div>
+                  <div className="text-xs font-body text-barn-tertiary mb-3">
+                    £175* per employee per month ({calculatorData.employees} employees × £175 × 12 months)
+                  </div>
+                  
+                  {/* Tax Deduction Info */}
+                  <div className="bg-gray-50 border border-barn-primary rounded-barn p-3 mb-3">
+                    <div className="flex justify-between items-center text-xs mb-1">
+                      <span className="font-body text-barn-primary">Less: Tax Relief (25% Corp Tax):</span>
+                      <span className="font-body font-semibold text-barn-primary">+{formatCurrency((calculations.annualProgramCost || 0) * 0.25)}</span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs border-t border-barn-primary pt-2 mt-2">
+                      <span className="font-body font-semibold text-barn-primary">Net After-Tax Cost:</span>
+                      <span className="font-body font-bold text-barn-primary">-{formatCurrency((calculations.annualProgramCost || 0) * 0.75)}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center border-t border-barn-accent pt-3 mt-3">
+                    <span className="font-body font-semibold text-barn-tertiary">Net Annual Benefit:</span>
+                    <span className="font-body font-bold text-barn-primary">{formatCurrency((calculations.totalSavings || 0) - ((calculations.annualProgramCost || 0) * 0.75))}</span>
+                  </div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-1">
+                    ROI: {Math.round(calculations.roiPercentage || 0)}%
+                  </div>
+                  <p className="text-xs font-body text-barn-tertiary">
+                    Return on Investment after 25% UK Corporation Tax Relief (Net cost: {formatCurrency((calculations.annualProgramCost || 0) * 0.75)}/year)
+                  </p>
+                </div>
+              </div>
+              
               <div className="space-y-4">
                 {/* Absenteeism Savings */}
                 <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
@@ -725,51 +771,6 @@ const ROICalculator = () => {
                   </div>
                   <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Turnover</h3>
                   <p className="text-sm font-body text-barn-tertiary">20% reduction in employee turnover through improved workplace satisfaction</p>
-                </div>
-                
-                {/* Total Impact */}
-                <div className="bg-gray-50 rounded-barn p-6 border-2 border-barn-primary shadow-barn">
-                  <div className="text-3xl font-headline font-bold mb-2 text-barn-primary">
-                    {formatCurrency(calculations.totalSavings || 0)}
-                  </div>
-                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Total Estimated Annual Financial Impact</h3>
-                  <p className="text-sm font-body text-barn-tertiary mb-3">Combined financial benefit from your comprehensive wellness program</p>
-                  
-                  {/* Program Cost Breakdown */}
-                  <div className="bg-barn-secondary rounded-barn p-4 mb-3 text-sm shadow-inner">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-body text-barn-tertiary">Barn Gym Corporate Wellness Investment:</span>
-                      <span className="font-body font-semibold text-barn-tertiary">-{formatCurrency(calculations.annualProgramCost || 0)}</span>
-                    </div>
-                    <div className="text-xs font-body text-barn-tertiary mb-3">
-                      £175* per employee per month ({calculatorData.employees} employees × £175 × 12 months)
-                    </div>
-                    
-                    {/* Tax Deduction Info */}
-                    <div className="bg-gray-50 border border-barn-primary rounded-barn p-3 mb-3">
-                      <div className="flex justify-between items-center text-xs mb-1">
-                        <span className="font-body text-barn-primary">Less: Tax Relief (25% Corp Tax):</span>
-                        <span className="font-body font-semibold text-barn-primary">+{formatCurrency((calculations.annualProgramCost || 0) * 0.25)}</span>
-                      </div>
-                      <div className="flex justify-between items-center text-xs border-t border-barn-primary pt-2 mt-2">
-                        <span className="font-body font-semibold text-barn-primary">Net After-Tax Cost:</span>
-                        <span className="font-body font-bold text-barn-primary">-{formatCurrency((calculations.annualProgramCost || 0) * 0.75)}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-between items-center border-t border-barn-accent pt-3 mt-3">
-                      <span className="font-body font-semibold text-barn-tertiary">Net Annual Benefit:</span>
-                      <span className="font-body font-bold text-barn-primary">{formatCurrency((calculations.totalSavings || 0) - ((calculations.annualProgramCost || 0) * 0.75))}</span>
-                    </div>
-                  </div>
-                  
-                  {/* ROI Percentage */}
-                  <div className="mt-3 pt-3 border-t border-barn-accent">
-                    <div className="text-lg font-headline font-semibold text-barn-primary">
-                      ROI: {calculations.roiPercentage ? Math.round(calculations.roiPercentage) : 0}%
-                    </div>
-                    <p className="text-xs font-body text-barn-tertiary">Return on Investment after 25% UK Corporation Tax Relief (Net cost: £{Math.round((parseFloat(calculatorData.employees) * 175 * 12) * 0.75).toLocaleString()}/year)</p>
-                  </div>
                 </div>
               </div>
             </div>
