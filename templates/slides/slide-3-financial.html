@@ -152,45 +152,6 @@
         z-index: 100;
         opacity: 1;
     }
-    .productivity-section {
-        background-color: #F0F9F7;
-        border: 2px solid #007559;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 20px 0;
-    }
-    .productivity-title {
-        font-family: 'Red Rose', cursive;
-        font-weight: 400;
-        color: #007559;
-        font-size: 24px;
-        margin-bottom: 15px;
-        text-align: center;
-    }
-    .productivity-item {
-        text-align: center;
-    }
-    .productivity-label {
-        font-family: 'Raleway', sans-serif;
-        font-weight: 500;
-        color: #333333;
-        font-size: 18px;
-        margin-bottom: 8px;
-    }
-    .productivity-value {
-        font-family: 'Red Rose', cursive;
-        font-weight: 400;
-        color: #007559;
-        font-size: 28px;
-        margin-bottom: 8px;
-    }
-    .productivity-description {
-        font-family: 'Raleway', sans-serif;
-        font-weight: 400;
-        color: #666666;
-        font-size: 14px;
-        font-style: italic;
-    }
 </style>
 </head>
 <body>
@@ -220,34 +181,29 @@
 </div>
 </div>
 
-<!-- Productivity Value Creation Section -->
-<div class="productivity-section">
-<div class="productivity-title">Additional Value Creation</div>
-<div class="productivity-item">
-<div class="productivity-label">Productivity Increase</div>
-<div class="productivity-value">£{{PRODUCTIVITY_SAVINGS}} ({{PRODUCTIVITY_PERCENTAGE}}% gain)</div>
-<div class="productivity-description">Enhanced employee engagement and health drives additional value creation</div>
-</div>
-</div>
 
 <div class="sidebar">
 <div class="investment-box">
 <div class="investment-title">Investment Details</div>
 <div class="investment-item">
-<div class="item-label">Annual Cost</div>
-<div class="item-value">£{{ANNUAL_PROGRAM_COST}}</div>
-</div>
-<div class="investment-item">
 <div class="item-label">Cost per employee</div>
 <div class="item-value">£175 / month</div>
+</div>
+<div class="investment-item">
+<div class="item-label">Annual Cost</div>
+<div class="item-value">£{{ANNUAL_PROGRAM_COST}}</div>
 </div>
 <div class="investment-item">
 <div class="item-label">After Tax Relief (25%)</div>
 <div class="item-value">£{{AFTER_TAX_COST}}</div>
 </div>
 <div class="investment-item total-row">
-<div class="item-label">Total Savings</div>
+<div class="item-label">Total Cost Savings</div>
 <div class="item-value">£{{TOTAL_SAVINGS}}</div>
+</div>
+<div class="investment-item">
+<div class="item-label">Total Productivity Increase</div>
+<div class="item-value">£{{PRODUCTIVITY_SAVINGS}}</div>
 </div>
 <div class="investment-item">
 <div class="item-label">Net Benefit</div>
