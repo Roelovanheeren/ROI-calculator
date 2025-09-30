@@ -162,26 +162,42 @@
     /* Mobile Responsive Styles */
     @media (max-width: 768px) {
         .slide-container {
-            width: 96vw;
+            width: 100vw;
             min-height: 100vh;
             max-height: none;
+            background: linear-gradient(135deg, #007559 0%, #00a86b 100%);
         }
         .header {
-            padding: 20px 2.5vw;
+            padding: 20px 5vw;
+            background: transparent;
+        }
+        .main-title, .subtitle, .intro-text {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .content-container {
-            padding: 15px 2.5vw 30px;
+            padding: 15px 5vw 30px;
             flex-direction: column;
             gap: 20px;
+            background: transparent;
         }
         .metrics-container {
-            width: 95%;
+            width: 100%;
+        }
+        .metric-item {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
         }
         .tools-container {
-            width: 95%;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
         .tool-item {
-            width: 95%;
+            width: 100%;
         }
     }
     .logo {

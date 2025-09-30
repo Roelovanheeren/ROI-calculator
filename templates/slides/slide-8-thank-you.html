@@ -112,27 +112,34 @@
    /* Mobile Responsive Styles */
    @media (max-width: 768px) {
        .slide-container {
-           width: 96vw;
+           width: 100vw;
            min-height: 100vh;
            max-height: none;
+           background: linear-gradient(135deg, #007559 0%, #00a86b 100%);
        }
        .main-title {
            font-size: 48px;
+           color: white;
+           text-shadow: 0 2px 4px rgba(0,0,0,0.3);
        }
        .subtitle {
            font-size: 24px;
+           color: white;
+           text-shadow: 0 2px 4px rgba(0,0,0,0.3);
        }
        .contact-container {
-           width: 95%;
-           padding: 30px 2.5vw;
+           width: 100%;
+           padding: 30px 5vw;
+           background: rgba(255, 255, 255, 0.95);
+           backdrop-filter: blur(10px);
        }
        .contacts-row {
            flex-direction: column;
            gap: 20px;
        }
        .contact-item {
-           width: 95%;
-           margin: 0 auto;
+           width: 100%;
+           margin: 0;
        }
    }
     .logo {

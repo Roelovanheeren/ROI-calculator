@@ -125,23 +125,33 @@
     /* Mobile Responsive Styles */
     @media (max-width: 768px) {
         .slide-container {
-            width: 96vw;
+            width: 100vw;
             min-height: 100vh;
             max-height: none;
+            background: linear-gradient(135deg, #007559 0%, #00a86b 100%);
         }
         .header {
-            padding: 20px 2.5vw;
+            padding: 20px 5vw;
+            background: transparent;
+        }
+        .main-title, .subtitle, .intro-text {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .grid-container {
-            padding: 15px 2.5vw 30px;
+            padding: 15px 5vw 30px;
             gap: 15px;
+            background: transparent;
         }
         .grid-item {
-            width: 95%;
-            margin: 0 auto;
+            width: 100%;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
         .footer {
-            padding: 0 2.5vw 20px;
+            padding: 0 5vw 20px;
+            color: white;
         }
     }
     .logo {
