@@ -114,6 +114,29 @@
         padding: 0 60px 25px;
         font-style: italic;
     }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .slide-container {
+            width: 96vw;
+            min-height: 100vh;
+            max-height: none;
+        }
+        .header {
+            padding: 20px 2.5vw;
+        }
+        .content-container {
+            padding: 15px 2.5vw 30px;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sources-column {
+            width: 95%;
+        }
+        .footer {
+            padding: 0 2.5vw 20px;
+        }
+    }
     .logo {
         position: absolute;
         top: 20px;

@@ -140,6 +140,33 @@
         line-height: 1.3;
         word-wrap: break-word;
     }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .slide-container {
+            width: 96vw;
+            min-height: 100vh;
+            max-height: none;
+        }
+        .header {
+            padding: 20px 2.5vw;
+        }
+        .steps-container {
+            padding: 15px 2.5vw;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .step-item {
+            width: 95%;
+            margin: 0 auto;
+        }
+        .cta-container {
+            padding: 20px 2.5vw 30px;
+        }
+        .cta-box {
+            width: 95%;
+        }
+    }
     .logo {
         position: absolute;
         top: 20px;

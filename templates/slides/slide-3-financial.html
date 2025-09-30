@@ -138,10 +138,36 @@
         margin-right: 8px;
         border-radius: 3px;
     }
-    .legend-text {
+        .legend-text {
         font-family: 'Raleway', sans-serif;
         font-size: 16px;
         font-weight: 500;
+    }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .slide-container {
+            width: 96vw;
+            min-height: 100vh;
+            max-height: none;
+        }
+        .header {
+            padding: 20px 2.5vw;
+        }
+        .content-container {
+            padding: 15px 2.5vw 30px;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .chart-container {
+            width: 95%;
+        }
+        .sidebar {
+            width: 95%;
+        }
+        .investment-box {
+            width: 95%;
+        }
     }
     .logo {
         position: absolute;

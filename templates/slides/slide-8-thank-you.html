@@ -108,6 +108,33 @@
        opacity: 0.9;
        margin-top: 20px;
    }
+   
+   /* Mobile Responsive Styles */
+   @media (max-width: 768px) {
+       .slide-container {
+           width: 96vw;
+           min-height: 100vh;
+           max-height: none;
+       }
+       .main-title {
+           font-size: 48px;
+       }
+       .subtitle {
+           font-size: 24px;
+       }
+       .contact-container {
+           width: 95%;
+           padding: 30px 2.5vw;
+       }
+       .contacts-row {
+           flex-direction: column;
+           gap: 20px;
+       }
+       .contact-item {
+           width: 95%;
+           margin: 0 auto;
+       }
+   }
     .logo {
         position: absolute;
         top: 20px;
