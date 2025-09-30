@@ -24,7 +24,6 @@ interface LeadData {
   calculations: {
     totalSavings: number;
     roiPercentage: number;
-    paybackMonths: number;
     netSavings: number;
     annualProgramCost: number;
     afterTaxProgramCost: number;
