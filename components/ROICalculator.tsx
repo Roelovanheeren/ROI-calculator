@@ -354,10 +354,10 @@ const ROICalculator = () => {
   // Calculator Step
   if (step === 'calculator') {
     return (
-      <div className="min-h-screen py-barn-section px-4 md:bg-white">
-        <div className="w-11/12 md:w-4/5 mx-auto">
+      <div className="min-h-screen md:py-barn-section md:px-4 md:bg-white">
+        <div className="w-full md:w-4/5 md:mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white md:rounded-2xl md:shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
+          <div className="bg-white md:rounded-2xl md:shadow-xl p-4 md:p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '100vh'}}>
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -560,10 +560,10 @@ const ROICalculator = () => {
   // Results Step (shows immediate value)
   if (step === 'results') {
     return (
-      <div className="min-h-screen py-barn-section px-4 md:bg-white">
-        <div className="w-11/12 md:w-4/5 mx-auto">
+      <div className="min-h-screen md:py-barn-section md:px-4 md:bg-white">
+        <div className="w-full md:w-4/5 md:mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white md:rounded-2xl md:shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
+          <div className="bg-white md:rounded-2xl md:shadow-xl p-4 md:p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '100vh'}}>
           {/* Header with Results */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -836,10 +836,10 @@ const ROICalculator = () => {
   // Email Gate Step
   if (step === 'gate') {
     return (
-      <div className="min-h-screen py-barn-section px-4 md:bg-white">
-        <div className="w-11/12 md:w-4/5 mx-auto">
+      <div className="min-h-screen md:py-barn-section md:px-4 md:bg-white">
+        <div className="w-full md:w-4/5 md:mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white md:rounded-2xl md:shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
+          <div className="bg-white md:rounded-2xl md:shadow-xl p-4 md:p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '100vh'}}>
           {/* Results Preview */}
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 gradient-text leading-tight">
@@ -1105,10 +1105,10 @@ const ROICalculator = () => {
     const leadScore = calculateLeadScore();
     
     return (
-      <div className="min-h-screen py-barn-section px-4 md:bg-white">
-        <div className="w-11/12 md:w-4/5 mx-auto">
+      <div className="min-h-screen md:py-barn-section md:px-4 md:bg-white">
+        <div className="w-full md:w-4/5 md:mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white md:rounded-2xl md:shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
+          <div className="bg-white md:rounded-2xl md:shadow-xl p-4 md:p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '100vh'}}>
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
             <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
