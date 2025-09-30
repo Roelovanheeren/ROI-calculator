@@ -77,6 +77,8 @@ export class SlideGenerator {
 
   private static convertLeadDataToSlideData(data: LeadData): SlideData {
     console.log('🔍 Converting data for slides:', JSON.stringify(data, null, 2));
+    console.log('🔍 Contact data structure:', data.contactData);
+    console.log('🔍 Company name specifically:', data.contactData?.companyName);
     
     // Check if calculations exist and handle missing data gracefully
     const calculations = data.calculations || {};
@@ -157,9 +159,13 @@ export class SlideGenerator {
   private static populateTemplate(template: string, data: SlideData): string {
     let populatedTemplate = template;
     
+    console.log('🔄 Template replacement data:', data);
+    console.log('🔄 COMPANY_NAME value:', data.COMPANY_NAME);
+    
     // Replace all variables
     Object.entries(data).forEach(([key, value]) => {
       const placeholder = `{{${key}}}`;
+      console.log(`🔄 Replacing ${placeholder} with ${value}`);
       populatedTemplate = populatedTemplate.replace(new RegExp(placeholder, 'g'), value.toString());
     });
     
