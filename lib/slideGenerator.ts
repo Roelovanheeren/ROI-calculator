@@ -130,7 +130,6 @@ export class SlideGenerator {
       // Savings Breakdown (amounts)
       SICK_DAYS_SAVINGS: this.formatCurrency(sickDaysSavings),
       PRODUCTIVITY_SAVINGS: this.formatCurrency(productivitySavings),
-      PRODUCTIVITY_GAIN: this.formatCurrency((projectedSavings as any).productivityGain || 0),
       HEALTHCARE_SAVINGS: this.formatCurrency(healthcareSavings),
       TURNOVER_SAVINGS: this.formatCurrency(turnoverSavings),
       
