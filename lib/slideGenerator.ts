@@ -88,8 +88,8 @@ export class SlideGenerator {
     // Calculate savings breakdown percentages with fallbacks
     const sickDaysSavings = (projectedSavings as any).sickDaysReduction || (totalSavings * 0.25);
     const productivitySavings = (projectedSavings as any).productivityGain || (totalSavings * 0.30);
-    const healthcareSavings = (projectedSavings as any).healthcareReduction || (totalSavings * 0.20);
-    const turnoverSavings = (projectedSavings as any).turnoverReduction || (totalSavings * 0.25);
+    const healthcareSavings = (projectedSavings as any).healthcareReduction || (totalSavings * 0.10);
+    const turnoverSavings = (projectedSavings as any).turnoverReduction || (totalSavings * 0.15);
     
     // Calculate percentages for pie chart - ensure they always add up to exactly 100%
     const rawSickDaysPercentage = (sickDaysSavings / totalSavings) * 100;
@@ -150,7 +150,8 @@ export class SlideGenerator {
       'slide-4-program.html',
       'slide-5-measurement.html',
       'slide-6-next-steps.html',
-      'slide-7-sources.html'
+      'slide-7-sources.html',
+      'slide-8-thank-you.html'
     ];
     
     const slidePath = join(process.cwd(), 'templates', 'slides', slideFiles[slideNumber - 1]);
@@ -178,7 +179,7 @@ export class SlideGenerator {
   public static generateAllSlides(leadData: LeadData): string[] {
     const slides: string[] = [];
     
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 8; i++) {
       slides.push(this.generateSlide(i, leadData));
     }
     

@@ -97,12 +97,12 @@ const ROICalculator = () => {
       productivity: 0 // No current productivity costs - wellness creates new value
     };
 
-    // Projected savings (based on industry benchmarks)
+    // Projected savings (based on Gubler et al. 2018 research)
     const projectedSavings = {
-      sickDaysReduction: currentCosts.sickDays * 0.25, // 25% reduction
-      turnoverReduction: currentCosts.turnover * 0.20, // 20% reduction
-      healthcareReduction: currentCosts.healthcare * 0.15, // 15% reduction
-      productivityGain: employees * salary * 0.10 // 10% productivity improvement on total payroll
+      sickDaysReduction: currentCosts.sickDays * 0.25, // 25% reduction (Gubler et al. 2018)
+      turnoverReduction: currentCosts.turnover * 0.15, // 15% reduction (Gubler et al. 2018)
+      healthcareReduction: currentCosts.healthcare * 0.10, // 10% reduction (Gubler et al. 2018)
+      productivityGain: employees * salary * 0.06 // 6% productivity improvement (Gubler et al. 2018)
     };
 
     // Barn Gym Corporate Wellness Investment (£175 per employee per month)
@@ -125,8 +125,8 @@ const ROICalculator = () => {
     // If not, calculate how many months of savings needed to cover monthly cost
     const paybackMonths = monthlySavings >= monthlyProgramCostAfterTax ? 1 : Math.ceil(monthlyProgramCostAfterTax / monthlySavings);
 
-    // Calculate yearly productivity gain (employees * salary * 0.10)
-    const yearlyProductivityGain = employees * salary * 0.10;
+    // Calculate yearly productivity gain (employees * salary * 0.06)
+    const yearlyProductivityGain = employees * salary * 0.06;
 
     const results: Calculations = {
       currentCosts,

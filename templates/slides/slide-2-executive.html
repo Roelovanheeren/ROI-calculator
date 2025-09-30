@@ -58,10 +58,10 @@
     }
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 30px;
-        padding: 20px 80px 40px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+        padding: 20px 40px 40px;
         flex-grow: 1;
         max-height: 450px;
     }
@@ -121,10 +121,19 @@
         text-align: center;
         padding: 0 60px 25px;
     }
+    .logo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+        z-index: 10;
+    }
 </style>
 </head>
 <body>
 <div class="slide-container">
+<img src="Barn Gym Logo transparent copy.png" alt="Barn Gym Logo" class="logo">
 <div class="header">
 <div class="main-title">Executive Overview</div>
 <div class="subtitle">Key Performance Metrics for {{COMPANY_NAME}}</div>
@@ -136,7 +145,21 @@
 <i class="fas fa-coins"></i>
 </div>
 <div class="item-value">£{{TOTAL_SAVINGS}}</div>
-<div class="item-title">Total Annual Savings</div>
+<div class="item-title">Total Savings</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="item-value">£{{PRODUCTIVITY_GAIN}}</div>
+<div class="item-title">Total Productivity Increase</div>
+</div>
+<div class="grid-item">
+<div class="item-icon">
+<i class="fas fa-calculator"></i>
+</div>
+<div class="item-value">£{{AFTER_TAX_COST}}</div>
+<div class="item-title">Total Cost</div>
 </div>
 <div class="grid-item">
 <div class="item-icon">
@@ -144,20 +167,6 @@
 </div>
 <div class="item-value">{{ROI_PERCENTAGE}}%</div>
 <div class="item-title">ROI Percentage</div>
-</div>
-<div class="grid-item">
-<div class="item-icon">
-<i class="fas fa-calculator"></i>
-</div>
-<div class="item-value">£{{NET_SAVINGS}}</div>
-<div class="item-title">Net Annual Benefit</div>
-</div>
-<div class="grid-item">
-<div class="item-icon">
-<i class="fas fa-chart-line"></i>
-</div>
-<div class="item-value">£{{PRODUCTIVITY_GAIN}}</div>
-<div class="item-title">Productivity Increase Value</div>
 </div>
 </div>
 </div>
