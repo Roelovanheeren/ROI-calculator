@@ -85,24 +85,15 @@ export class SlideGenerator {
     
     // Calculate savings breakdown percentages with fallbacks
     const sickDaysSavings = (projectedSavings as any).sickDaysReduction || (totalSavings * 0.25);
-    const productivitySavings = (projectedSavings as any).productivityGain || (totalSavings * 0.30);
+    const productivitySavings = (projectedSavings as any).productivityGain || (totalSavings * 0.06);
     const healthcareSavings = (projectedSavings as any).healthcareReduction || (totalSavings * 0.10);
     const turnoverSavings = (projectedSavings as any).turnoverReduction || (totalSavings * 0.15);
     
-    // Calculate percentages for pie chart - ensure they always add up to exactly 100%
-    const rawSickDaysPercentage = (sickDaysSavings / totalSavings) * 100;
-    const rawProductivityPercentage = (productivitySavings / totalSavings) * 100;
-    const rawHealthcarePercentage = (healthcareSavings / totalSavings) * 100;
-    const rawTurnoverPercentage = (turnoverSavings / totalSavings) * 100;
-    
-    // Round to ensure 100% total
-    const sickDaysPercentage = Math.round(rawSickDaysPercentage);
-    const productivityPercentage = Math.round(rawProductivityPercentage);
-    const healthcarePercentage = Math.round(rawHealthcarePercentage);
-    
-    // Calculate remaining percentage to ensure total = 100
-    const currentTotal = sickDaysPercentage + productivityPercentage + healthcarePercentage;
-    const turnoverPercentage = 100 - currentTotal;
+    // Use research-based percentages for pie chart
+    const sickDaysPercentage = 25; // 25% reduction in sick days
+    const productivityPercentage = 6; // 6% productivity gain
+    const healthcarePercentage = 10; // 10% healthcare reduction
+    const turnoverPercentage = 15; // 15% turnover reduction
     
     return {
       // Company Info
