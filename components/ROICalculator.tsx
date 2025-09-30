@@ -357,7 +357,7 @@ const ROICalculator = () => {
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/Background white:green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -563,7 +563,7 @@ const ROICalculator = () => {
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-6xl mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/Background white:green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           {/* Header with Results */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -823,7 +823,7 @@ const ROICalculator = () => {
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/Background white:green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           {/* Results Preview */}
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 gradient-text leading-tight">
@@ -1092,7 +1092,7 @@ const ROICalculator = () => {
       <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Main Content Container with Background Image */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/Background white:green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
             <h1 className="text-4xl font-bold text-gray-900 mb-4 gradient-text">
@@ -1101,7 +1101,7 @@ const ROICalculator = () => {
           </div>
 
           {/* Report Summary */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/Background white:green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
             <h2 className="text-2xl font-headline font-bold text-barn-primary mb-6 text-center">
               Executive Summary for {contactData.companyName}
             </h2>
