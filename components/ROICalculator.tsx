@@ -44,6 +44,7 @@ interface Calculations {
   netSavings: number;
   roiPercentage: number;
   yearlyProductivityGain: number;
+  productivityGain: number;
 }
 
 const ROICalculator = () => {
@@ -116,7 +117,15 @@ const ROICalculator = () => {
     const annualProgramCost = monthlyProgramCost * 12;
     
     const totalCurrentCosts = Object.values(currentCosts).reduce((sum, cost) => sum + cost, 0);
-    const totalSavings = Object.values(projectedSavings).reduce((sum, saving) => sum + saving, 0);
+    
+    // Separate cost reductions from productivity gains
+    const costReductions = {
+      sickDaysReduction: projectedSavings.sickDaysReduction,
+      turnoverReduction: projectedSavings.turnoverReduction,
+      healthcareReduction: projectedSavings.healthcareReduction
+    };
+    const totalSavings = Object.values(costReductions).reduce((sum, saving) => sum + saving, 0);
+    const productivityGain = projectedSavings.productivityGain;
     
     // Calculate after-tax cost (25% UK corporation tax relief)
     const afterTaxProgramCost = annualProgramCost * 0.75; // 75% after 25% tax relief
@@ -139,7 +148,8 @@ const ROICalculator = () => {
       totalSavings,
       netSavings,
       roiPercentage,
-      yearlyProductivityGain
+      yearlyProductivityGain,
+      productivityGain
     };
 
     setCalculations(results);
@@ -1170,7 +1180,7 @@ const ROICalculator = () => {
               
               <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
-                  {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
+                  {formatCurrency(calculations.productivityGain || 0)}
                 </div>
                 <div className="text-sm text-white">Productivity Increase Value</div>
               </div>
