@@ -1104,6 +1104,11 @@ const ROICalculator = () => {
   if (step === 'report') {
     const leadScore = calculateLeadScore();
     
+    // Scroll to top when report step loads
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+    
     return (
       <div className="min-h-screen md:py-barn-section md:px-4 md:bg-white">
         <div className="w-full md:w-4/5 md:mx-auto">
