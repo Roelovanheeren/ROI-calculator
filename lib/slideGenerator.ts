@@ -76,9 +76,6 @@ export class SlideGenerator {
   }
 
   private static convertLeadDataToSlideData(data: LeadData): SlideData {
-    console.log('🔍 Converting data for slides:', JSON.stringify(data, null, 2));
-    console.log('🔍 Contact data structure:', data.contactData);
-    console.log('🔍 Company name specifically:', data.contactData?.companyName);
     
     // Check if calculations exist and handle missing data gracefully
     const calculations = data.calculations || {};
@@ -101,13 +98,9 @@ export class SlideGenerator {
     // Productivity is separate value creation, not included in savings breakdown
     const productivityPercentage = 10; // 10% productivity gain (shown separately)
     
-    // Debug: Log the company name being used
-    console.log('🏢 Company name from data:', data.contactData?.companyName);
-    console.log('🏢 Full contact data:', data.contactData);
-    
     return {
       // Company Info
-      COMPANY_NAME: data.contactData?.companyName || 'TEST COMPANY NAME',
+      COMPANY_NAME: data.contactData?.companyName || 'Your Company',
       EMPLOYEE_COUNT: data.calculatorData?.employees || '100',
       CONTACT_NAME: data.contactData?.fullName || 'Contact Name',
       JOB_TITLE: data.contactData?.jobTitle || 'Manager',
@@ -159,13 +152,9 @@ export class SlideGenerator {
   private static populateTemplate(template: string, data: SlideData): string {
     let populatedTemplate = template;
     
-    console.log('🔄 Template replacement data:', data);
-    console.log('🔄 COMPANY_NAME value:', data.COMPANY_NAME);
-    
     // Replace all variables
     Object.entries(data).forEach(([key, value]) => {
       const placeholder = `{{${key}}}`;
-      console.log(`🔄 Replacing ${placeholder} with ${value}`);
       populatedTemplate = populatedTemplate.replace(new RegExp(placeholder, 'g'), value.toString());
     });
     
