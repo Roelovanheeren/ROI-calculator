@@ -107,7 +107,7 @@ export class SlideGenerator {
     
     return {
       // Company Info
-      COMPANY_NAME: data.contactData?.companyName || 'Your Company',
+      COMPANY_NAME: data.contactData?.companyName || 'TEST COMPANY NAME',
       EMPLOYEE_COUNT: data.calculatorData?.employees || '100',
       CONTACT_NAME: data.contactData?.fullName || 'Contact Name',
       JOB_TITLE: data.contactData?.jobTitle || 'Manager',
