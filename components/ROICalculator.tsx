@@ -472,7 +472,7 @@ const ROICalculator = () => {
                     step="0.1"
                     value={calculatorData.sickDays}
                     onChange={(e) => setCalculatorData({...calculatorData, sickDays: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="e.g., 7.8 (UK average)"
                   />
                 </div>
@@ -491,7 +491,7 @@ const ROICalculator = () => {
                     step="0.1"
                     value={calculatorData.turnoverRate}
                     onChange={(e) => setCalculatorData({...calculatorData, turnoverRate: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="e.g., 20 (sweet spot: 20%+)"
                   />
                 </div>
@@ -507,7 +507,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.healthcareCost}
                     onChange={(e) => setCalculatorData({...calculatorData, healthcareCost: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="e.g., 2500"
                   />
                 </div>
@@ -523,7 +523,7 @@ const ROICalculator = () => {
                     min="0"
                     value={calculatorData.currentWellnessCost}
                     onChange={(e) => setCalculatorData({...calculatorData, currentWellnessCost: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="e.g., 5000 (enter 0 if none)"
                   />
                 </div>
@@ -947,7 +947,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.fullName}
                     onChange={(e) => setContactData({...contactData, fullName: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="John Smith"
                   />
                 </div>
@@ -961,7 +961,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.workEmail}
                     onChange={(e) => setContactData({...contactData, workEmail: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -975,7 +975,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.companyName}
                     onChange={(e) => setContactData({...contactData, companyName: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="Your Company Ltd"
                   />
                 </div>
@@ -989,7 +989,7 @@ const ROICalculator = () => {
                     required
                     value={contactData.jobTitle}
                     onChange={(e) => setContactData({...contactData, jobTitle: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="HR Director"
                   />
                 </div>
@@ -1001,7 +1001,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.companySize}
                     onChange={(e) => setContactData({...contactData, companySize: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                   >
                     <option value="">Select size</option>
                     <option value="50-200">50-200 employees</option>
@@ -1018,7 +1018,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.timeline}
                     onChange={(e) => setContactData({...contactData, timeline: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                   >
                     <option value="">Select timeline</option>
                     <option value="Immediate">Immediate (within 1 month)</option>
@@ -1035,7 +1035,7 @@ const ROICalculator = () => {
                   <select
                     value={contactData.currentInitiatives}
                     onChange={(e) => setContactData({...contactData, currentInitiatives: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                   >
                     <option value="">Select current initiatives</option>
                     <option value="None">None</option>
@@ -1053,7 +1053,7 @@ const ROICalculator = () => {
                     type="text"
                     value={contactData.industry}
                     onChange={(e) => setContactData({...contactData, industry: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px]"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-barn-primary focus:border-barn-primary transition-all duration-200 text-base min-h-[48px] md:bg-white bg-green-50 bg-opacity-30"
                     placeholder="e.g., Technology, Finance, Healthcare"
                   />
                 </div>
@@ -1122,6 +1122,30 @@ const ROICalculator = () => {
               Executive Summary for {contactData.companyName}
             </h2>
             
+            {/* PDF Download Button - Moved above metric boxes */}
+            {contactId && (
+              <div className="text-center mb-8">
+                <button 
+                  onClick={downloadPDF}
+                  disabled={isDownloadingPDF}
+                  className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none text-lg mx-auto"
+                >
+                  {isDownloadingPDF ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                      Generating PDF...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5 mr-3" />
+                      Download Professional Report (PDF)
+                    </>
+                  )}
+                </button>
+                <p className="text-sm text-gray-600 mt-2">Get your detailed 7-slide boardroom presentation</p>
+              </div>
+            )}
+            
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="p-6 rounded-lg text-center border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
                 <div className="text-3xl font-bold text-white mb-2">
@@ -1145,31 +1169,6 @@ const ROICalculator = () => {
               </div>
             </div>
 
-            {/* PDF Download Button */}
-            {contactId && (
-              <div className="text-center mb-6">
-                <button 
-                  onClick={downloadPDF}
-                  disabled={isDownloadingPDF}
-                  className="bg-gradient-to-r from-barn-primary to-barn-green-600 hover:from-barn-green-600 hover:to-barn-primary text-white font-bold py-4 px-8 rounded-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:transform-none text-lg mx-auto"
-                >
-                  {isDownloadingPDF ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                      Generating PDF...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="mr-3 w-5 h-5" />
-                      Download Professional Report (PDF)
-                    </>
-                  )}
-                </button>
-                <p className="text-sm text-gray-600 mt-2">
-                  Get your detailed 7-slide boardroom presentation
-                </p>
-              </div>
-            )}
 
             {/* Call to Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
