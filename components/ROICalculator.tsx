@@ -355,7 +355,7 @@ const ROICalculator = () => {
   if (step === 'calculator') {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-4/5 mx-auto">
           {/* Main Content Container with Background Image */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           {/* Header */}
@@ -561,7 +561,7 @@ const ROICalculator = () => {
   if (step === 'results') {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="w-4/5 mx-auto">
           {/* Main Content Container with Background Image */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           {/* Header with Results */}
@@ -821,7 +821,7 @@ const ROICalculator = () => {
   if (step === 'gate') {
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-4/5 mx-auto">
           {/* Main Content Container with Background Image */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           {/* Results Preview */}
@@ -1090,7 +1090,7 @@ const ROICalculator = () => {
     
     return (
       <div className="min-h-screen bg-white py-barn-section px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-4/5 mx-auto">
           {/* Main Content Container with Background Image */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
           <div className="text-center mb-8">
