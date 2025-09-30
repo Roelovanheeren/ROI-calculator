@@ -1102,7 +1102,7 @@ const ROICalculator = () => {
           </div>
 
           {/* Report Summary */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/background-white-green.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', minHeight: '400px'}}>
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-2xl font-headline font-bold text-barn-primary mb-6 text-center">
               Executive Summary for {contactData.companyName}
             </h2>
