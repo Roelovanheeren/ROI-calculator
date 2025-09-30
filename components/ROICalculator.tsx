@@ -803,15 +803,15 @@ const ROICalculator = () => {
                 <div className="text-sm font-body text-white">Absenteeism Reduction</div>
               </div>
               <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                <div className="text-2xl font-headline font-bold text-white">10%</div>
+                <div className="text-2xl font-headline font-bold text-white">6%</div>
                 <div className="text-sm font-body text-white">Productivity Increase</div>
               </div>
               <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                <div className="text-2xl font-headline font-bold text-white">15%</div>
+                <div className="text-2xl font-headline font-bold text-white">10%</div>
                 <div className="text-sm font-body text-white">Healthcare Cost Reduction</div>
               </div>
               <div className="p-4 rounded-barn border-2 border-white" style={{backgroundImage: 'url(/special-box-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
-                <div className="text-2xl font-headline font-bold text-white">20%</div>
+                <div className="text-2xl font-headline font-bold text-white">15%</div>
                 <div className="text-sm font-body text-white">Turnover Reduction</div>
               </div>
             </div>
