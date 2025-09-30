@@ -354,7 +354,7 @@ const ROICalculator = () => {
   // Calculator Step
   if (step === 'calculator') {
     return (
-      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
@@ -557,7 +557,7 @@ const ROICalculator = () => {
   // Results Step (shows immediate value)
   if (step === 'results') {
     return (
-      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header with Results */}
           <div className="text-center mb-8">
@@ -644,7 +644,7 @@ const ROICalculator = () => {
           {/* Main Results Grid */}
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
             {/* Left Column: Company Information */}
-            <div className="bg-white rounded-2xl shadow-xl p-6">
+            <div className="bg-white rounded-2xl shadow-xl p-6" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
               <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <Building className="w-6 h-6 mr-2" />
                 Your Company Information
@@ -679,7 +679,7 @@ const ROICalculator = () => {
             </div>
 
             {/* Right Column: Results */}
-            <div className="bg-white rounded-2xl shadow-xl p-6">
+            <div className="bg-white rounded-2xl shadow-xl p-6" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
               <h2 className="text-2xl font-headline font-bold mb-6 text-barn-primary flex items-center">
                 <TrendingUp className="w-6 h-6 mr-2" />
                 Your Estimated Results
@@ -814,14 +814,14 @@ const ROICalculator = () => {
   // Email Gate Step
   if (step === 'gate') {
     return (
-      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           {/* Results Preview */}
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 gradient-text leading-tight">
               Your Initial Results Are Ready!
             </h1>
-            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-8">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
               <div className="text-3xl sm:text-4xl lg:text-6xl font-bold text-barn-primary mb-2 leading-none">
                 {formatCurrency(calculations.totalSavings || 0)}
               </div>
@@ -900,7 +900,7 @@ const ROICalculator = () => {
           </div>
 
           {/* Email Gate */}
-          <div id="email-gate-form" className="bg-white rounded-2xl shadow-xl p-8">
+          <div id="email-gate-form" className="bg-white rounded-2xl shadow-xl p-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
             <div className="text-center mb-6">
               <FileText className="mx-auto w-16 h-16 text-barn-primary mb-4" />
               <h2 className="text-3xl font-headline font-bold text-barn-primary mb-3">
@@ -1080,7 +1080,7 @@ const ROICalculator = () => {
     const leadScore = calculateLeadScore();
     
     return (
-      <div className="min-h-screen py-barn-section px-4" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      <div className="min-h-screen bg-white py-barn-section px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <CheckCircle className="mx-auto w-20 h-20 text-barn-primary mb-4" />
@@ -1090,7 +1090,7 @@ const ROICalculator = () => {
           </div>
 
           {/* Report Summary */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8" style={{backgroundImage: 'url(/main-background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
             <h2 className="text-2xl font-headline font-bold text-barn-primary mb-6 text-center">
               Executive Summary for {contactData.companyName}
             </h2>
