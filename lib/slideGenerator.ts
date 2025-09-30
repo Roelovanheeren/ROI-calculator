@@ -99,6 +99,10 @@ export class SlideGenerator {
     // Productivity is separate value creation, not included in savings breakdown
     const productivityPercentage = 10; // 10% productivity gain (shown separately)
     
+    // Debug: Log the company name being used
+    console.log('🏢 Company name from data:', data.contactData?.companyName);
+    console.log('🏢 Full contact data:', data.contactData);
+    
     return {
       // Company Info
       COMPANY_NAME: data.contactData?.companyName || 'Your Company',
