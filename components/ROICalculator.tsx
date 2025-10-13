@@ -124,8 +124,11 @@ const ROICalculator = () => {
       turnoverReduction: projectedSavings.turnoverReduction,
       healthcareReduction: projectedSavings.healthcareReduction
     };
-    const totalSavings = Object.values(costReductions).reduce((sum, saving) => sum + saving, 0);
+    const costReductionsTotal = Object.values(costReductions).reduce((sum, saving) => sum + saving, 0);
     const productivityGain = projectedSavings.productivityGain;
+    
+    // Total financial impact includes both cost savings AND productivity gains
+    const totalSavings = costReductionsTotal + productivityGain;
     
     // Calculate after-tax cost (25% UK corporation tax relief)
     const afterTaxProgramCost = annualProgramCost * 0.75; // 75% after 25% tax relief
@@ -679,7 +682,7 @@ const ROICalculator = () => {
                   {formatCurrency(calculations.totalSavings || 0)}
                 </div>
                 <h3 className="font-body font-semibold text-barn-tertiary mb-1">Total Estimated Annual Financial Impact</h3>
-                <p className="text-sm font-body text-barn-tertiary mb-3">Combined financial benefit from your comprehensive wellness program</p>
+                <p className="text-sm font-body text-barn-tertiary mb-3">Combined cost savings and productivity gains from your comprehensive wellness program</p>
                 
                 {/* Program Cost Breakdown */}
                 <div className="bg-barn-secondary rounded-barn p-4 mb-3 text-sm shadow-inner">
