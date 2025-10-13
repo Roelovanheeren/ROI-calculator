@@ -729,7 +729,7 @@ const ROICalculator = () => {
               
               <div className="space-y-4">
                 {/* Absenteeism Savings */}
-                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
                   <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.sickDaysReduction || 0)}
                   </div>
@@ -738,7 +738,7 @@ const ROICalculator = () => {
                 </div>
                 
                 {/* Productivity Value */}
-                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
                   <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
                   </div>
@@ -747,7 +747,7 @@ const ROICalculator = () => {
                 </div>
                 
                 {/* Healthcare Savings */}
-                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
                   <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.healthcareReduction || 0)}
                   </div>
@@ -756,7 +756,7 @@ const ROICalculator = () => {
                 </div>
                 
                 {/* Turnover Savings */}
-                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm">
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
                   <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
                     {formatCurrency(calculations.projectedSavings?.turnoverReduction || 0)}
                   </div>
