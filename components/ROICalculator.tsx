@@ -728,24 +728,6 @@ const ROICalculator = () => {
               </h2>
               
               <div className="space-y-4">
-                {/* Absenteeism Savings */}
-                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
-                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
-                    {formatCurrency(calculations.projectedSavings?.sickDaysReduction || 0)}
-                  </div>
-                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Absenteeism</h3>
-                  <p className="text-sm font-body text-barn-tertiary">25% reduction in sick days through improved employee wellness</p>
-                </div>
-                
-                {/* Productivity Value */}
-                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
-                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
-                    {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
-                  </div>
-                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Value from Increased Productivity</h3>
-                  <p className="text-sm font-body text-barn-tertiary">10% productivity boost from enhanced employee engagement and health</p>
-                </div>
-                
                 {/* Healthcare Savings */}
                 <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
                   <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
@@ -755,6 +737,15 @@ const ROICalculator = () => {
                   <p className="text-sm font-body text-barn-tertiary">15% reduction in healthcare expenses through preventive wellness measures</p>
                 </div>
                 
+                {/* Absenteeism Savings */}
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
+                    {formatCurrency(calculations.projectedSavings?.sickDaysReduction || 0)}
+                  </div>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Absenteeism</h3>
+                  <p className="text-sm font-body text-barn-tertiary">25% reduction in sick days through improved employee wellness</p>
+                </div>
+                
                 {/* Turnover Savings */}
                 <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
                   <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
@@ -762,6 +753,15 @@ const ROICalculator = () => {
                   </div>
                   <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Savings from Reduced Turnover</h3>
                   <p className="text-sm font-body text-barn-tertiary">20% reduction in employee turnover through improved workplace satisfaction</p>
+                </div>
+                
+                {/* Productivity Value */}
+                <div className="bg-barn-secondary rounded-barn p-4 border-l-4 border-barn-primary shadow-sm transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer">
+                  <div className="text-2xl font-headline font-bold text-barn-primary mb-2">
+                    {formatCurrency(calculations.projectedSavings?.productivityGain || 0)}
+                  </div>
+                  <h3 className="font-body font-semibold text-barn-tertiary mb-1">Estimated Annual Value from Increased Productivity</h3>
+                  <p className="text-sm font-body text-barn-tertiary">10% productivity boost from enhanced employee engagement and health</p>
                 </div>
               </div>
             </div>
