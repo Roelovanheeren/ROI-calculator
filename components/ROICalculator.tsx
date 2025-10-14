@@ -915,7 +915,7 @@ const ROICalculator = () => {
                     )}
                   </button>
                   <p className="text-sm text-gray-600 mt-2">
-                    Get your detailed 7-slide boardroom presentation
+                    Get your detailed 8-slide boardroom presentation
                   </p>
                 </div>
               )}
@@ -1162,7 +1162,7 @@ const ROICalculator = () => {
                     </>
                   )}
                 </button>
-                <p className="text-sm text-gray-600 mt-2">Get your detailed 7-slide boardroom presentation</p>
+                <p className="text-sm text-gray-600 mt-2">Get your detailed 8-slide boardroom presentation</p>
               </div>
             )}
             

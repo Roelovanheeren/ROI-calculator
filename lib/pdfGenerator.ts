@@ -43,7 +43,7 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
   try {
     console.log('🎯 Starting branded PDF generation...');
     
-    // Generate all 7 branded slides
+    // Generate all 8 branded slides
     const slides = SlideGenerator.generateAllSlides(data);
     
     console.log(`✅ Generated ${slides.length} slide templates`);
@@ -82,7 +82,7 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
     let combinedHTML = '';
     
     for (let i = 0; i < slides.length; i++) {
-      console.log(`Processing slide ${i + 1}/7...`);
+      console.log(`Processing slide ${i + 1}/8...`);
       
       // Add page break for all slides except the first
       const slideHTML = slides[i].replace(
@@ -194,7 +194,7 @@ export async function generateBrandedROIReport(data: LeadData): Promise<Buffer> 
     
     await browser.close();
     
-    console.log('✅ Branded PDF generated successfully with 7 slides');
+    console.log('✅ Branded PDF generated successfully with 8 slides');
     return pdfBuffer;
     
   } catch (error) {
